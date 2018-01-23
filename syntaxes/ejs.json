@@ -1,0 +1,283 @@
+{
+	"information_for_contributors": [
+		"This file has been converted from https://github.com/demyte/language-ejs/blob/master/grammars/ejs.json",
+		"If you want to provide a fix or improvement, please create a pull request against the original repository.",
+		"Once accepted there, we are happy to receive an update request."
+	],
+	"version": "https://github.com/demyte/language-ejs/commit/cbf0e35971324e861247145e92f4cbbe0bc42d0e",
+	"name": "Embedded Javascript",
+	"scopeName": "text.html.ejs",
+	"fileTypes": [
+		"ejs"
+	],
+	"patterns": [
+		{
+			"include": "text.html.basic"
+		},
+		{
+			"include": "#general-includes"
+		},
+		{
+			"include": "#ejs-all"
+		}
+		
+	],
+	"repository": {
+		"empty": {},
+		"comments": {
+			"begin": "(\\s*)<%#",
+			"captures": {
+				"0": {
+					"name": "punctuation.definition.comment.source.ejs"
+				}
+			},
+			"end": "(\\s*)%>",
+			"name": "comment.block.ejs"
+		},
+		"line-comments": {
+			"name": "comment.line.double-slash.ejs",
+			"begin": "(\\s*)<%//",
+			"end": "$(\\s)%>"
+		},
+		"block-comments": {
+			"name": "comment.block.ejs",
+			"begin": "<%(\\s?/\\*)",
+			"end": "(%>)"
+		},
+		"single-quotes": {
+			"name": "string.quoted.single.ejs",
+			"begin": "'",
+			"end": "'"
+		},
+		"general-includes0": {},
+		"general-includes": {
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#line-comments"
+				},
+				{
+					"include": "#block-comments"
+				}
+			]
+		},
+		"ejs-control-tagOLD": {
+			"match": "(?!(?:(<%)))\\s*.*\\s*(?=(?:(%>)))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#ejs-tag"
+						}
+					]
+				}
+			}
+		},
+		"ejs-multiOLD": {
+			"begin": "(<%)(\\s*)?",
+			"end": "(\\s*)?(%>)",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#ejs-begin-tag"
+						},
+						{
+							"include": "#ejs-end-tag"
+						},
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#ejs-tag4"
+				}
+			]
+		},
+		"ejs-control-tag0": {},
+		"ejs-control-tag": {
+			"match": "(?!(?:(<%)))\\s*.*\\s*(?=((%>)))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "#ejs-tag"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#ejs-tag"
+				}
+			]
+		},
+		"ejs-multi0": {},
+		"ejs-multi": {
+			"begin": "\\G",
+			"end": "(?=(%>))",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "$self"
+						},
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#ejs-tag4"
+				}
+			]
+		},
+		"ejs-all0": {},
+		"ejs-all": {
+			"begin": "<%",
+			"end": "%>",
+			"name": "keyword.begin.tag.ejs",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "text.html.basic"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include":"#ejs-inline"
+				},
+				{
+					"include": "#ejs-control-tag"
+				},
+				{
+					"include": "#ejs-multi"
+				}
+			]
+		},
+		"ejs-inline":{
+			"begin":"((?!<%)=)",
+			"end":"(?=%>)",
+			"patterns":[
+				{
+					"include":"#ejs-tag4"
+				}
+			]
+		},
+		"ejs-begin-tag": {
+			"match": "<%",
+			"name": "keyword.begin.tag.ejs"
+		},
+		"ejs-end-tag": {
+			"match": "%>",
+			"name": "keyword.end.tag.ejs"
+		},
+		"ejs-end-tag1": {
+			"begin": "%(?=>)",
+			"end": ">",
+			"name": "keyword.end.tag.ejs"
+		},
+		"ejs-tag0": {},
+		"ejs-tag": {
+			"begin": "(?!(<%))",
+			"end": "%>",
+			"captures": {
+				"0": {
+					"patterns": [
+						{
+							"include": "#general-includes"
+						}
+					]
+				}
+			},
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "source.js"
+				}
+			]
+		},
+		"ejs-tag4": {
+			"begin": "\\G",
+			"end": "(?=(%>))",
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "source.js"
+				}
+			]
+		},
+		"test0": {},
+		"test": {
+			"begin": "\\G",
+			"end": "(?=(%>))",
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#test2"
+				}
+			]
+		},
+		"test2": {
+			"begin": "(?!\\G)",
+			"end": "(?=(%>))",
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "#ejs-tag4"
+				}
+			]
+		},
+		"test3": {
+			"begin": "(\\G)",
+			"end": "(?=(%>))",
+			"patterns": [
+				{
+					"include": "$self"
+				},
+				{
+					"include": "source.js"
+				}
+			]
+		}
+	}
+}

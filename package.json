@@ -1,0 +1,28 @@
+{
+  "name": "ejs",
+  "version": "0.0.1",
+  "publisher": "vscode",
+  "engines": {
+    "vscode": "0.10.x"
+  },
+  "scripts": {
+    "update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
+  },
+	"contributes": {
+		"languages": [{
+			"id": "ejs",
+			"extensions": [".ejs",".rhtml",".html.ejs"],
+			"aliases": [ "JavaScript EJS",	"ejs"],
+			"mimetypes": ["text/html"],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+      "language": "ejs",
+			"scopeName": "text.html.ejs",
+			"path": "./syntaxes/ejs.json",
+			"embeddedLanguages": {
+				"section.embedded.source.ejs": "ejs"
+			}
+		}]
+  }
+}
