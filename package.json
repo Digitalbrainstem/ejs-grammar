@@ -8,31 +8,42 @@
 		"name": "Derek Thomas",
 		"email": "Derek@digitalbrainstem.com"
 	},
-  "engines": {
-    "vscode": "^0.10.x"
+	"engines": {
+		"vscode": "^0.10.x"
 	},
 	"categories": [
 		"Languages"
 	],
-  "scripts": {
-    "update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
-  },
+	"scripts": {
+		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
+	},
 	"contributes": {
-		"languages": [{
-			"id": "ejs",
-			"extensions": [".ejs",".rhtml",".html.ejs"],
-			"aliases": [ "JavaScript EJS",	"ejs", "EJS"],
-			"mimetypes": ["text/html"],
-			"configuration": "./language-configuration.json"
-		}],
-		"grammars": [{
-      "language": "ejs",
-			"scopeName": "text.html.ejs",
-			"path": "./syntaxes/ejs.json",
-			"embeddedLanguages": {
-				"section.embedded.source.ejs": "ejs"
+		"languages": [
+			{
+				"id": "ejs_intellisense",
+				"extensions": [
+					".ejs",
+					".rhtml",
+					".html.ejs"
+				],
+				"aliases": [
+					"JavaScript EJS",
+					"ejs",
+					"EJS"
+				],
+				"configuration": "./language-configuration.json"
 			}
-		}]
+		],
+		"grammars": [
+			{
+				"language": "ejs",
+				"scopeName": "text.html.ejs",
+				"path": "./syntaxes/ejs.json",
+				"embeddedLanguages": {
+					"section.embedded.source.ejs": "ejs"
+				}
+			}
+		]
 	},
 	"repository": {
 		"type": "git",
