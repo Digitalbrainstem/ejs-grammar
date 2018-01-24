@@ -1,7 +1,8 @@
 {
-	"name": "ejs-intellisense",
-	"description": "Syntax Highlighting for JavaScript EJS files",
-	"version": "0.0.1",
+	"name": "javascript-ejs-support",
+	"displayName": "Javascript EJS",
+	"description": "Language support with Syntax Highlighting for JavaScript EJS files",
+	"version": "0.0.3",
 	"license": "MIT",
 	"publisher": "DigitalBrainstem",
 	"author": {
