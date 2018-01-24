@@ -1,19 +1,15 @@
 # ejs-grammar
-EJS Grammar for VSCode
+New EJS Intellisense.
 
-For now, Find your VSCode installation directory.
-Go into the Extentions directory.
-Example: "C:\Program Files\Microsoft VS Code\resources\app\extensions"
-Create new folder called "ejs"
-Place the contents from this Repo in your new folder.
-Reload VSCode window
-Open EJS file
-Bottom Right, Click the language
-Select EJS.
+This will provide code completion for javascript and html.
 
-If you have any issues, please open an issue.
+If you want to see any features or if there is something I missed let me know on GitHub
 
-##TO DO##
+NOTE: This is in early development. If you have an issues please let me know on github.
+
+https://github.com/DigitalBrainstem/ejs-grammar
+
+# TO DO # 
 Integrate into VSCode as an actual Language.
 Create helpers to auto format code
 Add other tags from EJS

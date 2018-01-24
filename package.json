@@ -1,28 +1,53 @@
 {
-  "name": "ejs",
-  "version": "0.0.1",
-  "publisher": "vscode",
-  "engines": {
-    "vscode": "0.10.x"
-  },
-  "scripts": {
-    "update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
-  },
+	"name": "javascript-ejs-support",
+	"displayName": "Javascript EJS",
+	"description": "Language support with Syntax Highlighting for JavaScript EJS files",
+	"version": "0.0.3",
+	"license": "MIT",
+	"publisher": "DigitalBrainstem",
+	"author": {
+		"name": "Derek Thomas",
+		"email": "Derek@digitalbrainstem.com"
+	},
+	"engines": {
+		"vscode": "^0.10.x"
+	},
+	"categories": [
+		"Languages"
+	],
+	"scripts": {
+		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
+	},
 	"contributes": {
-		"languages": [{
-			"id": "ejs",
-			"extensions": [".ejs",".rhtml",".html.ejs"],
-			"aliases": [ "JavaScript EJS",	"ejs"],
-			"mimetypes": ["text/html"],
-			"configuration": "./language-configuration.json"
-		}],
-		"grammars": [{
-      "language": "ejs",
-			"scopeName": "text.html.ejs",
-			"path": "./syntaxes/ejs.json",
-			"embeddedLanguages": {
-				"section.embedded.source.ejs": "ejs"
+		"languages": [
+			{
+				"id": "ejs",
+				"extensions": [
+					".ejs",
+					".rhtml",
+					".html.ejs"
+				],
+				"aliases": [
+					"JavaScript EJS",
+					"ejs",
+					"EJS"
+				],
+				"configuration": "./language-configuration.json"
 			}
-		}]
-  }
+		],
+		"grammars": [
+			{
+				"language": "ejs",
+				"scopeName": "text.html.ejs",
+				"path": "./syntaxes/ejs.json",
+				"embeddedLanguages": {
+					"section.embedded.source.ejs": "ejs"
+				}
+			}
+		]
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	}
 }
