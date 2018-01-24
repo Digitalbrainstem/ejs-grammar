@@ -1,5 +1,5 @@
 {
-	"name": "ejs_intellisense",
+	"name": "ejs-intellisense",
 	"description": "Syntax Highlighting for JavaScript EJS files",
 	"version": "0.0.1",
 	"license": "MIT",
@@ -20,7 +20,7 @@
 	"contributes": {
 		"languages": [
 			{
-				"id": "ejs_intellisense",
+				"id": "ejs",
 				"extensions": [
 					".ejs",
 					".rhtml",
