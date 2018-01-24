@@ -1,10 +1,19 @@
 {
-  "name": "ejs",
-  "version": "0.0.1",
-  "publisher": "vscode",
+	"name": "ejs_intellisense",
+	"description": "Syntax Highlighting for JavaScript EJS files",
+	"version": "0.0.1",
+	"license": "MIT",
+	"publisher": "DigitalBrainstem",
+	"author": {
+		"name": "Derek Thomas",
+		"email": "Derek@digitalbrainstem.com"
+	},
   "engines": {
-    "vscode": "0.10.x"
-  },
+    "vscode": "^0.10.x"
+	},
+	"categories": [
+		"Languages"
+	],
   "scripts": {
     "update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
   },
@@ -12,7 +21,7 @@
 		"languages": [{
 			"id": "ejs",
 			"extensions": [".ejs",".rhtml",".html.ejs"],
-			"aliases": [ "JavaScript EJS",	"ejs"],
+			"aliases": [ "JavaScript EJS",	"ejs", "EJS"],
 			"mimetypes": ["text/html"],
 			"configuration": "./language-configuration.json"
 		}],
@@ -24,5 +33,9 @@
 				"section.embedded.source.ejs": "ejs"
 			}
 		}]
-  }
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	}
 }
