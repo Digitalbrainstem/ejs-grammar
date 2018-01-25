@@ -19,3 +19,7 @@ If you want to see support on other platforms let me know.
 1. Create helpers to auto format code
 2. Add other tags from EJS
 3. Create routines for special instances of EJS.
+
+# Contact #
+
+Twitter: [@digibrainstem](https://twitter.com/digibrainstem)
