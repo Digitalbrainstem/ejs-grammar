@@ -38,11 +38,6 @@
 			"begin": "<%(\\s?/\\*)",
 			"end": "(%>)"
 		},
-		"single-quotes": {
-			"name": "string.quoted.single.ejs",
-			"begin": "'",
-			"end": "'"
-		},
 		"general-includes": {
 			"captures": {
 				"0": {
