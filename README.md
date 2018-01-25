@@ -1,16 +1,22 @@
-# ejs-grammar
-New EJS Intellisense.
+# EJS Language Support
 
-This will provide code completion for javascript and html.
+Syntax highlighting for EJS, Javascript, and HTML tags.
+Javascript AutoCompletion.
+
+If this is working for you, please rate this so that others will choose this version as the other version is 7 years (as of 2018) out of date.
 
 If you want to see any features or if there is something I missed let me know on GitHub
 
-NOTE: This is in early development. If you have an issues please let me know on github.
-
 https://github.com/DigitalBrainstem/ejs-grammar
 
+NOTE: This is in early development; however, it does provide greater functionality than the other ejs language supports.
+
+# For Devs #
+
+If you need the tmLanguage file please visit my repo. It is located in syntaxes.
+If you want to see support on other platforms let me know.
+
 # TO DO # 
-Integrate into VSCode as an actual Language.
-Create helpers to auto format code
-Add other tags from EJS
-Create routines for special instances of EJS.
+1. Create helpers to auto format code
+2. Add other tags from EJS
+3. Create routines for special instances of EJS.

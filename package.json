@@ -1,8 +1,8 @@
 {
 	"name": "javascript-ejs-support",
 	"displayName": "Javascript EJS",
-	"description": "Language support with Syntax Highlighting for JavaScript EJS files",
-	"version": "0.0.3",
+	"description": "2018 - EJS language support for Visual Studio Code.",
+	"version": "0.1.0",
 	"license": "MIT",
 	"publisher": "DigitalBrainstem",
 	"author": {
