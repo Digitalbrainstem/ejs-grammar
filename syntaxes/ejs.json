@@ -19,24 +19,24 @@
 	],
 	"repository": {
 		"comments": {
-			"begin": "(\\s*)<%#",
+			"begin": "(\\s*)<(%|\\?)#",
 			"captures": {
 				"0": {
 					"name": "punctuation.definition.comment.source.ejs"
 				}
 			},
-			"end": "(\\s*)%>",
+			"end": "(\\s*)(%|\\?)>",
 			"name": "comment.block.ejs"
 		},
 		"line-comments": {
 			"name": "comment.line.double-slash.ejs",
-			"begin": "(\\s*)<%//",
-			"end": "$(\\s)%>"
+			"begin": "(\\s*)<(%|\\?)//",
+			"end": "$(\\s)(%|\\?)>"
 		},
 		"block-comments": {
 			"name": "comment.block.ejs",
-			"begin": "<%(\\s?/\\*)",
-			"end": "(%>)"
+			"begin": "<(%|\\?)(\\s?/\\*)",
+			"end": "((%|\\?)>)"
 		},
 		"general-includes": {
 			"captures": {
@@ -61,7 +61,7 @@
 			]
 		},
 		"ejs-control-tag": {
-			"match": "(?!(?:(<%)))\\s*.*\\s*(?=((%>)))",
+			"match": "(?!(?:(<(%|\\?))))\\s*.*\\s*(?=(((%|\\?)>)))",
 			"captures": {
 				"0": {
 					"patterns": [
@@ -85,7 +85,7 @@
 		},
 		"ejs-multi": {
 			"begin": "\\G",
-			"end": "(?=(%>))",
+			"end": "(?=((%|\\?)>))",
 			"captures": {
 				"0": {
 					"patterns": [
@@ -108,8 +108,8 @@
 			]
 		},
 		"ejs-all": {
-			"begin": "<%",
-			"end": "%>",
+			"begin": "<(%|\\?)",
+			"end": "(%|\\?)>",
 			"name": "keyword.begin.tag.ejs",
 			"captures": {
 				"0": {
@@ -133,8 +133,8 @@
 			]
 		},
 		"ejs-inline":{
-			"begin":"((?!<%)=)",
-			"end":"(?=%>)",
+			"begin":"((?!<(%|\\?))=)",
+			"end":"(?=(%|\\?)>)",
 			"patterns":[
 				{
 					"include":"#ejs-tag-global"
@@ -142,16 +142,16 @@
 			]
 		},
 		"ejs-begin-tag": {
-			"match": "<%",
+			"match": "<(%|\\?)",
 			"name": "keyword.begin.tag.ejs"
 		},
 		"ejs-end-tag": {
-			"match": "%>",
+			"match": "(%|\\?)>",
 			"name": "keyword.end.tag.ejs"
 		},	
 		"ejs-tag": {
-			"begin": "(?!(<%))",
-			"end": "%>",
+			"begin": "(?!(<(%|\\?)))",
+			"end": "(%|\\?)>",
 			"captures": {
 				"0": {
 					"patterns": [
@@ -172,7 +172,7 @@
 		},
 		"ejs-tag-global": {
 			"begin": "\\G",
-			"end": "(?=(%>))",
+			"end": "(?=((%|\\?)>))",
 			"patterns": [
 				{
 					"include": "$self"

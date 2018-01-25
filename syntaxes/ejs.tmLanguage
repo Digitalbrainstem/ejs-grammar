@@ -32,7 +32,7 @@
       <key>comments</key>
       <dict>
         <key>begin</key>
-        <string>(\s*)&lt;%#</string>
+        <string>(\s*)&lt;(%|\?)#</string>
         <key>captures</key>
         <dict>
           <key>0</key>
@@ -42,7 +42,7 @@
           </dict>
         </dict>
         <key>end</key>
-        <string>(\s*)%&gt;</string>
+        <string>(\s*)(%|\?)&gt;</string>
         <key>name</key>
         <string>comment.block.ejs</string>
       </dict>
@@ -51,18 +51,18 @@
         <key>name</key>
         <string>comment.line.double-slash.ejs</string>
         <key>begin</key>
-        <string>(\s*)&lt;%//</string>
+        <string>(\s*)&lt;(%|\?)//</string>
         <key>end</key>
-        <string>$(\s)%&gt;</string>
+        <string>$(\s)(%|\?)&gt;</string>
       </dict>
       <key>block-comments</key>
       <dict>
         <key>name</key>
         <string>comment.block.ejs</string>
         <key>begin</key>
-        <string>&lt;%(\s?/\*)</string>
+        <string>&lt;(%|\?)(\s?/\*)</string>
         <key>end</key>
-        <string>(%&gt;)</string>
+        <string>((%|\?)&gt;)</string>
       </dict>
       <key>general-includes</key>
       <dict>
@@ -98,7 +98,7 @@
       <key>ejs-control-tag</key>
       <dict>
         <key>match</key>
-        <string>(?!(?:(&lt;%)))\s*.*\s*(?=((%&gt;)))</string>
+        <string>(?!(?:(&lt;(%|\?))))\s*.*\s*(?=(((%|\?)&gt;)))</string>
         <key>captures</key>
         <dict>
           <key>0</key>
@@ -133,7 +133,7 @@
         <key>begin</key>
         <string>\G</string>
         <key>end</key>
-        <string>(?=(%&gt;))</string>
+        <string>(?=((%|\?)&gt;))</string>
         <key>captures</key>
         <dict>
           <key>0</key>
@@ -166,9 +166,9 @@
       <key>ejs-all</key>
       <dict>
         <key>begin</key>
-        <string>&lt;%</string>
+        <string>&lt;(%|\?)</string>
         <key>end</key>
-        <string>%&gt;</string>
+        <string>(%|\?)&gt;</string>
         <key>name</key>
         <string>keyword.begin.tag.ejs</string>
         <key>captures</key>
@@ -203,9 +203,9 @@
       <key>ejs-inline</key>
       <dict>
         <key>begin</key>
-        <string>((?!&lt;%)=)</string>
+        <string>((?!&lt;(%|\?))=)</string>
         <key>end</key>
-        <string>(?=%&gt;)</string>
+        <string>(?=(%|\?)&gt;)</string>
         <key>patterns</key>
         <array>
           <dict>
@@ -217,23 +217,23 @@
       <key>ejs-begin-tag</key>
       <dict>
         <key>match</key>
-        <string>&lt;%</string>
+        <string>&lt;(%|\?)</string>
         <key>name</key>
         <string>keyword.begin.tag.ejs</string>
       </dict>
       <key>ejs-end-tag</key>
       <dict>
         <key>match</key>
-        <string>%&gt;</string>
+        <string>(%|\?)&gt;</string>
         <key>name</key>
         <string>keyword.end.tag.ejs</string>
       </dict>
       <key>ejs-tag</key>
       <dict>
         <key>begin</key>
-        <string>(?!(&lt;%))</string>
+        <string>(?!(&lt;(%|\?)))</string>
         <key>end</key>
-        <string>%&gt;</string>
+        <string>(%|\?)&gt;</string>
         <key>captures</key>
         <dict>
           <key>0</key>
@@ -264,7 +264,7 @@
         <key>begin</key>
         <string>\G</string>
         <key>end</key>
-        <string>(?=(%&gt;))</string>
+        <string>(?=((%|\?)&gt;))</string>
         <key>patterns</key>
         <array>
           <dict>
