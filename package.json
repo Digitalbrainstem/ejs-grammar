@@ -16,14 +16,9 @@
 		"Languages"
 	],
 	"keywords": [
-		"ejs",
-		".ejs",
 		"EJS",
-		"Javascript",
-		"javascript",
-		"JavaScript",
-		"Embedded",
-		"embedded"
+		"embedded javascript",
+		"syntax highlighting"
 	],
 	"scripts": {
 		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
