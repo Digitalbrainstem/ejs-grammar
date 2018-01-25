@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 0.2.1 ##
+
+Update ReadMe
+
 ## 0.2.0 ##
 
 + Feature: Allows support for alternate tags of EJS `<??>` now work. 
