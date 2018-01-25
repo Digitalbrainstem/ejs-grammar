@@ -1,7 +1,6 @@
 # EJS Language Support
 
-Syntax highlighting for EJS, Javascript, and HTML tags.
-Javascript AutoCompletion.
+Syntax highlighting for EJS, Javascript, and HTML tags. Includes javascript autocompletion.
 
 If this is working for you, please rate this so that others will choose this version as the other version is 7 years (as of 2018) out of date.
 
