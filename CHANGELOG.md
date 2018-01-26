@@ -1,5 +1,11 @@
 # CHANGE LOG #
 
+## 0.2.2 ##
+
+Update ReadMe: Adding Resources
+Update ReadMe:Adding History
+Update ReadMe: Adding links to EJS Docs
+
 ## 0.2.1 ##
 
 Update ReadMe
