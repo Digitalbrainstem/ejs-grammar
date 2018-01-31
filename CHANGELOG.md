@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 0.2.3 ##
+
+Issue #6: Fix erronious indentaion on new line.
+
 ## 0.2.2 ##
 
 Update ReadMe: Adding Resources
