@@ -2,12 +2,12 @@
 
 ## 0.2.3 ##
 
-Issue #6: Fix erronious indentaion on new line.
+Issue #6: Fix erronious indentation on new line.
 
 ## 0.2.2 ##
 
 Update ReadMe: Adding Resources
-Update ReadMe:Adding History
+Update ReadMe: Adding History
 Update ReadMe: Adding links to EJS Docs
 
 ## 0.2.1 ##
