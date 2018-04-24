@@ -1,6 +1,6 @@
 {
 	"name": "javascript-ejs-support",
-	"displayName": "Javascript EJS",
+	"displayName": "EJS language support",
 	"description": "2018 - EJS language support for Visual Studio Code.",
 	"version": "0.2.3",
 	"license": "MIT",
@@ -24,32 +24,26 @@
 		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
 	},
 	"contributes": {
-		"languages": [
-			{
-				"id": "ejs",
-				"extensions": [
-					".ejs",
-					".rhtml",
-					".html.ejs"
-				],
-				"aliases": [
-					"JavaScript EJS",
-					"ejs",
-					"EJS"
-				],
-				"configuration": "./language-configuration.json"
+		"languages": [{
+			"id": "ejs",
+			"extensions": [
+				".ejs",
+				".html.ejs"
+			],
+			"aliases": [
+				"Embedded Javascript",
+				"ejs"
+			],
+			"configuration": "./language-configuration.json"
+		}],
+		"grammars": [{
+			"language": "ejs",
+			"scopeName": "text.html.ejs",
+			"path": "./syntaxes/ejs.json",
+			"embeddedLanguages": {
+				"section.embedded.source.ejs": "ejs"
 			}
-		],
-		"grammars": [
-			{
-				"language": "ejs",
-				"scopeName": "text.html.ejs",
-				"path": "./syntaxes/ejs.json",
-				"embeddedLanguages": {
-					"section.embedded.source.ejs": "ejs"
-				}
-			}
-		]
+		}]
 	},
 	"bugs": {
 		"url": "https://github.com/Digitalbrainstem/ejs-grammar/issues",
