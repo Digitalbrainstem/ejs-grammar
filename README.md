@@ -48,7 +48,7 @@ I wanted to start by utilizing other tmLanguage files that did things close to w
 
 ## Contributors ##
 
-[@meesfrensel]meesfrensel
+[@meesfrensel](https://github.com/meesfrensel)
 
 ## Contact ##
 

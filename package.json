@@ -2,7 +2,7 @@
 	"name": "javascript-ejs-support",
 	"displayName": "EJS language support",
 	"description": "2018 - EJS language support for Visual Studio Code.",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"license": "MIT",
 	"publisher": "DigitalBrainstem",
 	"author": {

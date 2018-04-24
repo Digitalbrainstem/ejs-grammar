@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 0.3.2 ##
+
+Fixing readme.
+
 ## 0.3.1 ##
 
 Fixing spelling mistake!
