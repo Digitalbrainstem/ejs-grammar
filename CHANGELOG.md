@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 0.3.1 ##
+
+Fixing spelling mistake!
+
 ## 0.3.0 ##
 
 Thanks to @meesfrensel Added new auto close pair and other various corrections.
