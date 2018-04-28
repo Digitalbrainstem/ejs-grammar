@@ -46,6 +46,10 @@ I wanted to start by utilizing other tmLanguage files that did things close to w
 + Create routines for special instances of EJS.
 + Add support for EJS inside of double quotes in html tags.
 
+## Contributors ##
+
+[@meesfrensel](https://github.com/meesfrensel)
+
 ## Contact ##
 
 Twitter: [@digibrainstem](https://twitter.com/digibrainstem)
