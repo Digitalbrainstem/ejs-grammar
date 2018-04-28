@@ -2,15 +2,20 @@
 	"name": "javascript-ejs-support",
 	"displayName": "EJS language support",
 	"description": "2018 - EJS language support for Visual Studio Code.",
-	"version": "0.2.3",
+	"author": "Derek Thomas <Derek@digitalbrainstem.com>",
 	"license": "MIT",
+	"version": "0.2.3",
 	"publisher": "DigitalBrainstem",
-	"author": {
-		"name": "Derek Thomas",
-		"email": "Derek@digitalbrainstem.com"
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar/issues",
+		"email": "help@digitalbrainstem.com"
 	},
 	"engines": {
-		"vscode": "^0.10.x"
+		"vscode": "^1.18.x"
 	},
 	"categories": [
 		"Languages"
@@ -20,37 +25,59 @@
 		"embedded javascript",
 		"syntax highlighting"
 	],
+	"activationEvents": [
+		"onLanguage:ejs"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"languages": [
+			{
+				"id": "ejs",
+				"extensions": [
+					".ejs",
+					".html.ejs"
+				],
+				"aliases": [
+					"Embedded Javascript",
+					"ejs"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "ejs",
+				"scopeName": "text.html.ejs",
+				"path": "./syntaxes/ejs.json",
+				"embeddedLanguages": {
+					"section.embedded.source.ejs": "ejs"
+				}
+			}
+		],
+		"configuration": {
+			"title": "EJS support configuration",
+			"properties": {
+				"javascript-ejs-support.maxNumberOfProblems": {
+					"scope": "resource",
+					"type": "number",
+					"default": 100,
+					"description": "Maximum number of problems reported"
+				}
+			}
+		}
+	},
 	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
 		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
 	},
-	"contributes": {
-		"languages": [{
-			"id": "ejs",
-			"extensions": [
-				".ejs",
-				".html.ejs"
-			],
-			"aliases": [
-				"Embedded Javascript",
-				"ejs"
-			],
-			"configuration": "./language-configuration.json"
-		}],
-		"grammars": [{
-			"language": "ejs",
-			"scopeName": "text.html.ejs",
-			"path": "./syntaxes/ejs.json",
-			"embeddedLanguages": {
-				"section.embedded.source.ejs": "ejs"
-			}
-		}]
+	"dependencies": {
+		"vscode": "^1.1.16",
+		"vscode-languageclient": "^3.5.0",
+		"vscode-languageserver": "^4.1.2"
 	},
-	"bugs": {
-		"url": "https://github.com/Digitalbrainstem/ejs-grammar/issues",
-		"email": "help@digitalbrainstem.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	"devDependencies": {
+		"@types/node": "^10.0.0",
+		"typescript": "^2.8.3"
 	}
 }
