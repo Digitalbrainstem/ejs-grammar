@@ -4,21 +4,32 @@
  * ------------------------------------------------------------------------------------------ */
 'use strict';
 
+import { CodeCompletion } from './code-completion';
 import {
 	IPCMessageReader, IPCMessageWriter, createConnection, IConnection, TextDocuments, TextDocument,
-	Diagnostic, DiagnosticSeverity, InitializeResult, TextDocumentPositionParams, CompletionItem,
-	CompletionItemKind
+	Diagnostic, DiagnosticSeverity, InitializeResult, TextDocumentPositionParams, CompletionItem
 } from 'vscode-languageserver';
 
+/**
+ * The `Settings` interface describe the part that is relevant to the server.
+ */
+interface Settings {
+	'ejs-support': EjsSettings;
+}
+
+/**
+ * The `EjsSettings` should be the same as defined in the `package.json` file.
+ */
+interface EjsSettings {
+	enable: boolean;
+	maxNumberOfProblems: number;
+}
 
 // Constants
 const DEFAULT_MAX_NUMBER_OF_PROBLEMS: number = 100;
-
-// Create a connection for the server. The connection uses Node's IPC as a transport
-const connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
-
 // Create a simple text document manager. The text document manager supports full document sync only
 const documents: TextDocuments = new TextDocuments();
+const connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
 
 let maxNumberOfProblems: number = DEFAULT_MAX_NUMBER_OF_PROBLEMS;
 
@@ -36,24 +47,6 @@ connection.onInitialize((_params): InitializeResult => {
 	}
 });
 
-// The content of a text document has changed. This event is emitted
-// when the text document first opened or when its content has changed.
-documents.onDidChangeContent((change) => {
-	connection.console.log('ondidchangecontent');
-	validateTextDocument(change.document);
-});
-
-// The settings interface describe the server relevant settings part
-interface Settings {
-	"ejs-support": EjsSettings;
-}
-
-// These are the settings we defined in the package.json file
-interface EjsSettings {
-	enable: boolean;
-	maxNumberOfProblems: number;
-}
-
 // The settings have changed. Is sent on server activation as well.
 connection.onDidChangeConfiguration((change) => {
 	const settings = <Settings>change.settings;
@@ -69,10 +62,14 @@ connection.onDidChangeConfiguration((change) => {
 	documents.all().forEach(validateTextDocument);
 });
 
+// The content of a text document has changed. This event is emitted
+// when the text document first opened or when its content has changed.
+documents.onDidChangeContent(change => validateTextDocument(change.document));
+
 /**
  * This example function finds appearances of 'typescript' and suggests that
  * it should be spelled 'TypeScript'.
- * @param textDocument document to validate
+ * @param document document to validate
  */
 function validateTextDocument(document: TextDocument): void {
 	let diagnostics: Diagnostic[] = [];
@@ -109,46 +106,12 @@ connection.onCompletion((_textDocumentPosition: TextDocumentPositionParams): Com
 	// The pass parameter contains the position of the text document in
 	// which code complete got requested. For the example we ignore this
 	// info and always provide the same completion items.
-	return [
-		{	// These are probably better for snippet support.
-			label: '<%',
-			kind: CompletionItemKind.Property,
-			commitCharacters: [' '],
-			data: 1
-		},
-		{
-			label: '<%=',
-			kind: CompletionItemKind.Property,
-			commitCharacters: [' '],
-			data: 2
-		},
-		{
-			label: '<%_',
-			kind: CompletionItemKind.Property,
-			commitCharacters: [' '],
-			data: 3
-		}
-	]
+	return CodeCompletion.getCodeCompletions();
 });
 
 // This handler resolves additional information for the item selected in
 // the completion list. Can be done using a separate file (cleaner, easier to maintain)
-connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
-	switch (item.data) {
-		case 1:
-			item.detail = 'Scriptlet opening tag';
-			item.documentation = '\'Scriptlet\' tag, for control-flow, no output.';
-			break;
-		case 2:
-			item.detail = 'Scriptlet output opening tag';
-			item.documentation = 'Outputs the value into the template (HTML escaped)';
-			break;
-		default:
-			item.detail = 'No documentation available'; // Or nothing at all? Cleaner?
-			break;
-	}
-	return item;
-});
+connection.onCompletionResolve(item => CodeCompletion.getItemResolveInfo(item));
 
 /* Also available, but with a different type of api (and you can't use both `connection.` and `documents.`):
 connection.onDidOpenTextDocument((params) => { });
@@ -159,7 +122,5 @@ connection.onDidCloseTextDocument((params) => { });
  * for more on this
  */
 
-// Make the text document manager listen on the connection for open, change and close text document events
 documents.listen(connection);
-// Make the connection listen
 connection.listen();
