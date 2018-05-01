@@ -1,3 +1,8 @@
 # This is ignored when publishing extension
 .vscode/**
-.vscode-test/**
+.gitignore
+
+# Don't publish source (TypeScript) files and corresponding map and configuration files
+src/**
+**/*.map
+tsconfig.json
