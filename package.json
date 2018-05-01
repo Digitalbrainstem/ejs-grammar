@@ -57,14 +57,26 @@
 		"configuration": {
 			"title": "EJS support configuration",
 			"properties": {
-				"javascript-ejs-support.maxNumberOfProblems": {
+				"ejs-support.enable": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Enable or disable the EJS support extension (TODO: implement this functionality)"
+				},
+				"ejs-support.maxNumberOfProblems": {
 					"scope": "resource",
 					"type": "number",
 					"default": 100,
 					"description": "Maximum number of problems reported"
 				}
 			}
-		}
+		},
+		"commands": [
+			{
+				"command": "extension.sayHello",
+				"title": "Hello World"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",

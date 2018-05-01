@@ -10,31 +10,28 @@ import {
 	CompletionItemKind
 } from 'vscode-languageserver';
 
+
+// Constants
+const DEFAULT_MAX_NUMBER_OF_PROBLEMS: number = 100;
+
 // Create a connection for the server. The connection uses Node's IPC as a transport
-let connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
+const connection: IConnection = createConnection(new IPCMessageReader(process), new IPCMessageWriter(process));
 
 // Create a simple text document manager. The text document manager supports full document sync only
-let documents: TextDocuments = new TextDocuments();
+const documents: TextDocuments = new TextDocuments();
 
-// Make the text document manager listen on the connection for open, change and close text document events
-documents.listen(connection);
-
-let shouldSendDiagnosticRelatedInformation: boolean = false;
+let maxNumberOfProblems: number = DEFAULT_MAX_NUMBER_OF_PROBLEMS;
 
 // After the server has started the client sends an initialize request. The server receives
-// in the passed params the rootPath of the workspace plus the client capabilities.
+// in the passed params the `workspaceFolders` of the workspace plus the client `capabilities`.
 connection.onInitialize((_params): InitializeResult => {
-	shouldSendDiagnosticRelatedInformation = _params.capabilities &&
-		_params.capabilities.textDocument &&
-		_params.capabilities.textDocument.publishDiagnostics &&
-		_params.capabilities.textDocument.publishDiagnostics.relatedInformation;
-
 	return {
 		capabilities: {
 			// Tell the client that the server works in FULL text document sync mode
 			textDocumentSync: documents.syncKind,
-			// Tell the client that the server support code complete
-			completionProvider: { resolveProvider: true }
+			// Tell the client that the server supports code completion
+			// TODO: Trigger characters should preferably be loaded automatically
+			completionProvider: { resolveProvider: true, triggerCharacters: ['<'] }
 		}
 	}
 });
@@ -42,6 +39,7 @@ connection.onInitialize((_params): InitializeResult => {
 // The content of a text document has changed. This event is emitted
 // when the text document first opened or when its content has changed.
 documents.onDidChangeContent((change) => {
+	connection.console.log('ondidchangecontent');
 	validateTextDocument(change.document);
 });
 
@@ -50,20 +48,24 @@ interface Settings {
 	"ejs-support": EjsSettings;
 }
 
-// These are the example settings we defined in the client's package.json
-// file
+// These are the settings we defined in the package.json file
 interface EjsSettings {
+	enable: boolean;
 	maxNumberOfProblems: number;
 }
 
-// hold the maxNumberOfProblems setting
-let maxNumberOfProblems: number;
-
-// The settings have changed. Is send on server activation as well.
+// The settings have changed. Is sent on server activation as well.
 connection.onDidChangeConfiguration((change) => {
-	let settings = <Settings>change.settings;
-	maxNumberOfProblems = settings['ejs-support'].maxNumberOfProblems || 100;
-	// Revalidate any open text documents
+	const settings = <Settings>change.settings;
+
+	if (settings['ejs-support'].enable === false) {
+		//connection.dispose();
+		// Do something that stops the server but restarts it when re-enabled
+		return;
+	}
+
+	maxNumberOfProblems = settings['ejs-support'].maxNumberOfProblems || DEFAULT_MAX_NUMBER_OF_PROBLEMS;
+
 	documents.all().forEach(validateTextDocument);
 });
 
@@ -72,13 +74,16 @@ connection.onDidChangeConfiguration((change) => {
  * it should be spelled 'TypeScript'.
  * @param textDocument document to validate
  */
-function validateTextDocument(textDocument: TextDocument): void {
+function validateTextDocument(document: TextDocument): void {
 	let diagnostics: Diagnostic[] = [];
-	let lines = textDocument.getText().split(/\r?\n/g);
-	let problems = 0;
-	for (let i = 0; i < lines.length && problems < maxNumberOfProblems; i++) {
+	const lines = document.getText().split(/\r?\n/g); // Support both LF and CRLF end-of-line
+
+	// Loop over all lines
+	for (let i = 0, problems = 0; i < lines.length && problems < maxNumberOfProblems; i++) {
 		let line = lines[i];
-		let index = line.toLocaleLowerCase().indexOf('typescript');
+
+		// Find index of 'typescript', if present, and add diagnostic
+		let index = line.indexOf('typescript');
 		if (index >= 0) {
 			problems++;
 
@@ -86,97 +91,75 @@ function validateTextDocument(textDocument: TextDocument): void {
 				severity: DiagnosticSeverity.Warning,
 				range: {
 					start: { line: i, character: index },
-					end: { line: i, character: index + 10 }
+					end: { line: i, character: index + 'typescript'.length }
 				},
-				message: `${line.substr(index, 10)} should be spelled TypeScript`,
+				message: `${line.substr(index, 'typescript'.length)} should be spelled TypeScript`,
 				source: 'EJS language support'
 			};
-			if (shouldSendDiagnosticRelatedInformation) {
-				diagnostic.relatedInformation = [
-					{
-						location: {
-							uri: textDocument.uri,
-							range: {
-								start: { line: i, character: index },
-								end: { line: i, character: index + 10 }
-							}
-						},
-						message: 'Spelling matters'
-					},
-					{
-						location: {
-							uri: textDocument.uri,
-							range: {
-								start: { line: i, character: index },
-								end: { line: i, character: index + 10 }
-							}
-						},
-						message: 'Particularly for names'
-					}
-				];
-			}
+
 			diagnostics.push(diagnostic);
 		}
 	}
 	// Send the computed diagnostics to VSCode.
-	connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+	connection.sendDiagnostics({ uri: document.uri, diagnostics });
 }
 
-connection.onDidChangeWatchedFiles((_change) => {
-	// Monitored files have change in VSCode
-	connection.console.log('We received a file change event');
-});
-
-
-// This handler provides the initial list of the completion items.
+// Provide completion items
 connection.onCompletion((_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
 	// The pass parameter contains the position of the text document in
 	// which code complete got requested. For the example we ignore this
 	// info and always provide the same completion items.
 	return [
-		{
-			label: 'TypeScript',
-			kind: CompletionItemKind.Text,
+		{	// These are probably better for snippet support.
+			label: '<%',
+			kind: CompletionItemKind.Property,
+			commitCharacters: [' '],
 			data: 1
 		},
 		{
-			label: 'JavaScript',
-			kind: CompletionItemKind.Text,
+			label: '<%=',
+			kind: CompletionItemKind.Property,
+			commitCharacters: [' '],
 			data: 2
+		},
+		{
+			label: '<%_',
+			kind: CompletionItemKind.Property,
+			commitCharacters: [' '],
+			data: 3
 		}
 	]
 });
 
-// This handler resolve additional information for the item selected in
-// the completion list.
+// This handler resolves additional information for the item selected in
+// the completion list. Can be done using a separate file (cleaner, easier to maintain)
 connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
-	if (item.data === 1) {
-		item.detail = 'TypeScript details';
-		item.documentation = 'TypeScript documentation';
-	} else if (item.data === 2) {
-		item.detail = 'JavaScript details';
-		item.documentation = 'JavaScript documentation';
+	switch (item.data) {
+		case 1:
+			item.detail = 'Scriptlet opening tag';
+			item.documentation = '\'Scriptlet\' tag, for control-flow, no output.';
+			break;
+		case 2:
+			item.detail = 'Scriptlet output opening tag';
+			item.documentation = 'Outputs the value into the template (HTML escaped)';
+			break;
+		default:
+			item.detail = 'No documentation available'; // Or nothing at all? Cleaner?
+			break;
 	}
 	return item;
 });
 
-connection.onDidOpenTextDocument((params) => {
-	// A text document got opened in VSCode.
-	// params.uri uniquely identifies the document. For documents store on disk this is a file URI.
-	// params.text the initial full content of the document.
-	connection.console.log(`${params.textDocument.uri} opened.`);
-});
-connection.onDidChangeTextDocument((params) => {
-	// The content of a text document did change in VSCode.
-	// params.uri uniquely identifies the document.
-	// params.contentChanges describe the content changes to the document.
-	connection.console.log(`${params.textDocument.uri} changed: ${JSON.stringify(params.contentChanges)}`);
-});
-connection.onDidCloseTextDocument((params) => {
-	// A text document got closed in VSCode.
-	// params.uri uniquely identifies the document.
-	connection.console.log(`${params.textDocument.uri} closed.`);
-});
+/* Also available, but with a different type of api (and you can't use both `connection.` and `documents.`):
+connection.onDidOpenTextDocument((params) => { });
+connection.onDidChangeTextDocument((params) => { });
+connection.onDidChangeWatchedFiles((change) => { });
+connection.onDidCloseTextDocument((params) => { });
+ * See https://code.visualstudio.com/docs/extensions/example-language-server#_incremental-text-document-synchronization
+ * for more on this
+ */
 
-// Listen on the connection
+// Make the text document manager listen on the connection for open, change and close text document events
+documents.listen(connection);
+// Make the connection listen
 connection.listen();
