@@ -1,5 +1,13 @@
 # CHANGE LOG #
 
+## 0.4.0 ##
+
+Fixing bugs and a major rewrite! Thanks to [@EB-Tech](https://github.com/ExE-Boss).
+
++ Fixes #3
++ Fixes #7
++ Fixes #20
+
 ## 0.3.2 ##
 
 Fixing readme.
