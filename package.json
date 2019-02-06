@@ -13,22 +13,18 @@
 		"vscode": "^0.10.x"
 	},
 	"categories": [
-		"Languages"
+		"Programming Languages"
 	],
 	"keywords": [
 		"EJS",
 		"embedded javascript",
 		"syntax highlighting"
 	],
-	"scripts": {
-		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
-	},
 	"contributes": {
 		"languages": [{
 			"id": "ejs",
 			"extensions": [
-				".ejs",
-				".html.ejs"
+				".ejs"
 			],
 			"aliases": [
 				"Embedded Javascript",
