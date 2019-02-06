@@ -1,37 +1,52 @@
 {
 	"comments": {
-		"blockComment":[ "<%#", "%>" ],
+		// symbols used for start and end of a block comment.
+		"blockComment": [ "<%#", "%>" ],
 		"lineComment": "//", // "#"
 	},
+
+	// symbols used as brackets
 	"brackets": [
+		["<!--", "-->"],
 		["<", ">"],
 		["{", "}"],
-		["(", ")"]
+		["[", "]"],
+		["(", ")"],
 	],
+
+	// symbols that are auto closed when typing
 	"autoClosingPairs": [
-		{ "open": "{", "close": "}", "notIn": ["string"] },
-		{ "open": "[", "close": "]", "notIn": ["string"] },
-		{ "open": "(", "close": ")", "notIn": ["string"] },
+		{ "open": "{", "close": "}" },
+		{ "open": "[", "close": "]" },
+		{ "open": "(", "close": ")" },
 		{ "open": "'", "close": "'", "notIn": ["string", "comment"] },
-		{ "open": "\"", "close": "\"", "notIn": ["string", "comment"] },
+		{ "open": "\"", "close": "\"", "notIn": ["string"] },
+		{ "open": "`", "close": "`", "notIn": ["string", "comment"] },
 		{ "open": "/*", "close": " */", "notIn": ["string"] },
-		{ "open": "/**", "close": " */", "notIn": ["string"] }
+		{ "open": "/**", "close": " */", "notIn": ["string"] },
+		{ "open": "<!--", "close": "-->", "notIn": [ "comment", "string" ]},
+		{ "open": "<%", "close": "%>" },
 	],
+
+	// symbols that that can be used to surround a selection
 	"surroundingPairs": [
+		["<", ">"],
 		["{", "}"],
 		["[", "]"],
 		["(", ")"],
 		["'", "'"],
-		["\"", "\""]
+		["\"", "\""],
 	],
+
 	"indentationRules": {
 		"increaseIndentPattern": "(\\(|\\[|((else(\\s)?)?if|else|for(each)?|while|switch).*:)\\s*(/[/*].*)?$",
 		"decreaseIndentPattern": "^(.*\\*\\/)?\\s*((\\})|(\\)+[;,])|(\\][;,])|\\b(else:)|\\b((end(if|for(each)?|while|switch));))"
 	},
+
 	"folding": {
 		"markers": {
-			"start": "^\\s*(#|\/\/)region\\b",
-			"end": "^\\s*(#|\/\/)endregion\\b"
+			"start": "^\\s*(?:(?:#|\/\/)region\\b|<!--\\s*#region\\b.*-->)",
+			"end": "^\\s*(?:(?:#|\/\/)endregion\\b|<!--\\s*#endregion\\b.*-->)",
 		}
 	}
 }

@@ -1,182 +1,104 @@
 {
-	"version": "0.2.3",
 	"name": "Embedded Javascript",
 	"scopeName": "text.html.ejs",
-	"fileTypes": [
-		"ejs"
-	],
+	"injections": {
+		"L:meta.attribute - (string.quoted.*.html string.unquoted.html, source.js)": {
+			"patterns": [
+				{
+					"include": "#tag-comment"
+				},
+				{
+					"include": "#tag-ejs"
+				}
+			]
+		},
+		"L:meta.block.js - (comment.block, text.html.ejs.override-js)": {
+			"patterns": [
+				{
+					"begin": "[_-]?(%|\\?)>",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.tag.end.ejs"
+						}
+					},
+					"end": "<(%|\\?)(?!%)[_=-]?",
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.tag.begin.ejs"
+						}
+					},
+					"contentName": "text.html.ejs.override-js",
+					"patterns": [
+						{
+							"include": "text.html.ejs"
+						}
+					]
+				}
+			]
+		},
+		"R:text.html - (comment.block, text.html meta.embedded, meta.tag.*.*.html, meta.tag.*.*.*.html, meta.tag.*.*.*.*.html)": {
+			"comment": "Uses R: to ensure this matches after any other injections.",
+			"patterns": [
+				{
+					"include": "#tag-comment"
+				},
+				{
+					"match": "<",
+					"name": "invalid.illegal.bad-angle-bracket.html"
+				}
+			]
+		}
+	},
 	"patterns": [
 		{
-			"include": "text.html.basic"
+			"include": "text.html.basic#xml-processing"
 		},
 		{
-			"include": "#general-includes"
+			"include": "text.html.basic#comment"
 		},
 		{
-			"include": "#ejs-all"
+			"include": "text.html.basic#doctype"
+		},
+		{
+			"include": "text.html.basic#cdata"
+		},
+		{
+			"include": "#tag-comment"
+		},
+		{
+			"include": "#tag-ejs"
+		},
+		{
+			"include": "text.html.basic#tags-valid"
+		},
+		{
+			"include": "text.html.basic#tags-invalid"
+		},
+		{
+			"include": "text.html.basic#entities"
 		}
-		
 	],
 	"repository": {
-		"comments": {
-			"begin": "(\\s*)<(%|\\?)#",
-			"captures": {
-				"0": {
-					"name": "punctuation.definition.comment.source.ejs"
-				}
-			},
-			"end": "(\\s*)(%|\\?)>",
+		"tag-comment": {
+			"begin": "<(%|\\?)#",
+			"end": "(%|\\?)>",
 			"name": "comment.block.ejs"
 		},
-		"line-comments": {
-			"name": "comment.line.double-slash.ejs",
-			"begin": "(\\s*)<(%|\\?)//",
-			"end": "$(\\s)(%|\\?)>"
-		},
-		"block-comments": {
-			"name": "comment.block.ejs",
-			"begin": "<(%|\\?)(\\s?/\\*)",
-			"end": "((%|\\?)>)"
-		},
-		"general-includes": {
-			"captures": {
+		"tag-ejs": {
+			"begin": "<(%|\\?)(?!%)[_=-]?",
+			"beginCaptures": {
 				"0": {
-					"patterns": [
-						{
-							"include": "text.html.basic"
-						}
-					]
+					"name": "punctuation.definition.tag.begin.ejs"
 				}
 			},
-			"patterns": [
-				{
-					"include": "#comments"
-				},
-				{
-					"include": "#line-comments"
-				},
-				{
-					"include": "#block-comments"
-				}
-			]
-		},
-		"ejs-control-tag": {
-			"match": "(?!(?:(<(%|\\?))))\\s*.*\\s*(?=(((%|\\?)>)))",
-			"captures": {
+			"end": "[_-]?(%|\\?)>",
+			"endCaptures": {
 				"0": {
-					"patterns": [
-						{
-							"include": "$self"
-						},
-						{
-							"include": "#ejs-tag"
-						}
-					]
+					"name": "punctuation.definition.tag.end.ejs"
 				}
 			},
+			"contentName": "source.js",
 			"patterns": [
-				{
-					"include": "$self"
-				},
-				{
-					"include": "#ejs-tag"
-				}
-			]
-		},
-		"ejs-multi": {
-			"begin": "\\G",
-			"end": "(?=((%|\\?)>))",
-			"captures": {
-				"0": {
-					"patterns": [
-						{
-							"include": "$self"
-						},
-						{
-							"include": "text.html.basic"
-						}
-					]
-				}
-			},
-			"patterns": [
-				{
-					"include": "$self"
-				},
-				{
-					"include": "#ejs-tag-global"
-				}
-			]
-		},
-		"ejs-all": {
-			"begin": "<(%|\\?)",
-			"end": "(%|\\?)>",
-			"name": "keyword.begin.tag.ejs",
-			"captures": {
-				"0": {
-					"patterns": [
-						{
-							"include": "text.html.basic"
-						}
-					]
-				}
-			},
-			"patterns": [
-				{
-					"include":"#ejs-inline"
-				},
-				{
-					"include": "#ejs-control-tag"
-				},
-				{
-					"include": "#ejs-multi"
-				}
-			]
-		},
-		"ejs-inline":{
-			"begin":"((?!<(%|\\?))=)",
-			"end":"(?=(%|\\?)>)",
-			"patterns":[
-				{
-					"include":"#ejs-tag-global"
-				}
-			]
-		},
-		"ejs-begin-tag": {
-			"match": "<(%|\\?)",
-			"name": "keyword.begin.tag.ejs"
-		},
-		"ejs-end-tag": {
-			"match": "(%|\\?)>",
-			"name": "keyword.end.tag.ejs"
-		},	
-		"ejs-tag": {
-			"begin": "(?!(<(%|\\?)))",
-			"end": "(%|\\?)>",
-			"captures": {
-				"0": {
-					"patterns": [
-						{
-							"include": "#general-includes"
-						}
-					]
-				}
-			},
-			"patterns": [
-				{
-					"include": "$self"
-				},
-				{
-					"include": "source.js"
-				}
-			]
-		},
-		"ejs-tag-global": {
-			"begin": "\\G",
-			"end": "(?=((%|\\?)>))",
-			"patterns": [
-				{
-					"include": "$self"
-				},
 				{
 					"include": "source.js"
 				}
