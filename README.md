@@ -48,9 +48,8 @@ I wanted to start by utilizing other tmLanguage files that did things close to w
 
 ## Contributors ##
 
-[@meesfrensel](https://github.com/meesfrensel)
-
-[@EB-Tech](https://github.com/ExE-Boss)
++ [@meesfrensel](https://github.com/meesfrensel)  
++ [@ExE-Boss](https://github.com/ExE-Boss)  
 
 ## Contact ##
 
