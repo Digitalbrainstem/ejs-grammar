@@ -2,7 +2,6 @@
 	"comments": {
 		// symbols used for start and end of a block comment.
 		"blockComment": [ "<%#", "%>" ],
-		"lineComment": "//", // "#"
 	},
 
 	// symbols used as brackets
