@@ -2,7 +2,7 @@
 
 ## 0.4.0 ##
 
-Fixing bugs and a major rewrite! Thanks to [@EB-Tech](https://github.com/ExE-Boss).
+Fixing bugs and a major rewrite! Thanks to [@ExE-Boss](https://github.com/ExE-Boss).
 
 + Fixes #3
 + Fixes #7
