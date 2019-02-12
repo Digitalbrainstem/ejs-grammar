@@ -1,3 +1,6 @@
+[![Visual&nbsp;Studio Marketplace](https://img.shields.io/visual-studio-marketplace/v/DigitalBrainstem.javascript-ejs-support.svg?label=Visual%20Studio%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=DigitalBrainstem.javascript-ejs-support)
+[![License](https://img.shields.io/github/license/Digitalbrainstem/ejs-grammar.svg)](https://github.com/Digitalbrainstem/ejs-grammar/blob/master/LICENSE)
+
 # EJS Language Support #
 
 Syntax highlighting for EJS, Javascript, and HTML tags. Includes javascript autocompletion.
@@ -26,7 +29,7 @@ If you want to see support on other platforms let me know.
 
 ### Resources ###
 
-I know Textmate/tmLanguage documention is not well recorded. If anyone reading this needs some good reading material on how to write one, these are the resources I used to help me write this. 
+I know Textmate/tmLanguage documention is not well recorded. If anyone reading this needs some good reading material on how to write one, these are the resources I used to help me write this.
 
 + [sublime Text](https://www.sublimetext.com/docs/3/scope_naming.html)
 + [Lessons Learned](https://www.apeth.com/nonblog/stories/textmatebundle.html)
@@ -48,7 +51,8 @@ I wanted to start by utilizing other tmLanguage files that did things close to w
 
 ## Contributors ##
 
-[@meesfrensel](https://github.com/meesfrensel)
++ [@meesfrensel](https://github.com/meesfrensel)
++ [@ExE-Boss](https://github.com/ExE-Boss)
 
 ## Contact ##
 

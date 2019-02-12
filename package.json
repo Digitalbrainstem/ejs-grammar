@@ -1,30 +1,29 @@
 {
 	"name": "javascript-ejs-support",
-	"version": "0.3.2",
 	"displayName": "EJS language support",
 	"description": "2018 - EJS language support for Visual Studio Code.",
-	"author": "Derek Thomas <Derek@digitalbrainstem.com>",
+	"version": "0.4.1",
 	"license": "MIT",
 	"publisher": "DigitalBrainstem",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Digitalbrainstem/ejs-grammar/issues",
-		"email": "help@digitalbrainstem.com"
+	"author": {
+		"name": "Derek Thomas",
+		"email": "Derek@digitalbrainstem.com"
 	},
 	"engines": {
 		"vscode": "^1.18.x"
 	},
 	"categories": [
-		"Languages"
+		"Programming Languages"
 	],
 	"keywords": [
 		"EJS",
 		"embedded javascript",
 		"syntax highlighting"
 	],
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
 	"activationEvents": [
 		"onLanguage:ejs"
 	],
@@ -34,8 +33,7 @@
 			{
 				"id": "ejs",
 				"extensions": [
-					".ejs",
-					".html.ejs"
+					".ejs"
 				],
 				"aliases": [
 					"Embedded Javascript",
@@ -78,13 +76,16 @@
 			}
 		]
 	},
-	"scripts": {
-		"vscode:prepublish": "tsc -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"update-grammar": "node ../../build/npm/update-grammar.js grammars/ejs.json ./syntaxes/ejs.json"
+	"bugs": {
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar/issues",
+		"email": "help@digitalbrainstem.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
 	},
 	"dependencies": {
-		"vscode": "^1.1.16",
+		"vscode": "^1.18.x",
 		"vscode-languageclient": "^3.5.0",
 		"vscode-languageserver": "^4.1.2"
 	},
