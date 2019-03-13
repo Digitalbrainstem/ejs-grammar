@@ -51,31 +51,13 @@
 	},
 	"patterns": [
 		{
-			"include": "text.html.basic#xml-processing"
-		},
-		{
-			"include": "text.html.basic#comment"
-		},
-		{
-			"include": "text.html.basic#doctype"
-		},
-		{
-			"include": "text.html.basic#cdata"
+			"include": "text.html.basic"
 		},
 		{
 			"include": "#tag-comment"
 		},
 		{
 			"include": "#tag-ejs"
-		},
-		{
-			"include": "text.html.basic#tags-valid"
-		},
-		{
-			"include": "text.html.basic#tags-invalid"
-		},
-		{
-			"include": "text.html.basic#entities"
 		}
 	],
 	"repository": {
