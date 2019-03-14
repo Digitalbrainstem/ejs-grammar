@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 0.4.4 ##
+
+Puiblished Untested Code. Rolling back.
+
 ## 0.4.1 ##
 
 No Code changes. Correcting information so those who help get properly recognized
