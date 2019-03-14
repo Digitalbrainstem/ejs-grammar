@@ -43,6 +43,9 @@
 					"include": "#tag-comment"
 				},
 				{
+					"include": "#tag-ejs"
+				},
+				{
 					"match": "<",
 					"name": "invalid.illegal.bad-angle-bracket.html"
 				}
@@ -51,47 +54,24 @@
 	},
 	"patterns": [
 		{
-			"include": "text.html.basic#xml-processing"
-		},
-		{
-			"include": "text.html.basic#comment"
-		},
-		{
-			"include": "text.html.basic#doctype"
-		},
-		{
-			"include": "text.html.basic#cdata"
-		},
-		{
-			"include": "#tag-comment"
-		},
-		{
-			"include": "#tag-ejs"
-		},
-		{
-			"include": "text.html.basic#tags-valid"
-		},
-		{
-			"include": "text.html.basic#tags-invalid"
-		},
-		{
-			"include": "text.html.basic#entities"
+			"include": "#tag-html"
 		}
 	],
 	"repository": {
 		"tag-comment": {
-			"begin": "<(%|\\?)#",
-			"end": "(%|\\?)>",
+			"begin": "<[(%|\\?)]#",
+			"end": "[(%|\\?)]>",
 			"name": "comment.block.ejs"
 		},
 		"tag-ejs": {
-			"begin": "<(%|\\?)(?!%)[_=-]?",
+			"name": "text.ejs",
+			"begin": "<[(%|\\?)](?!%)[_=-]?",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.begin.ejs"
 				}
 			},
-			"end": "[_-]?(%|\\?)>",
+			"end": "[_-]?[(%|\\?)]>",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.end.ejs"
@@ -101,6 +81,14 @@
 			"patterns": [
 				{
 					"include": "source.js"
+				}
+			]
+		},
+		"tag-html":{
+			"name": "text.html.injection",
+			"patterns": [
+				{
+					"include": "text.html.basic"
 				}
 			]
 		}
