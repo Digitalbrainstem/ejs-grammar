@@ -2,13 +2,14 @@
 	"name": "javascript-ejs-support",
 	"displayName": "EJS language support",
 	"description": "2018 - EJS language support for Visual Studio Code.",
-	"version": "0.4.2",
+	"version": "0.4.3",
 	"license": "MIT",
 	"publisher": "DigitalBrainstem",
 	"author": {
 		"name": "Derek Thomas",
 		"email": "Derek@digitalbrainstem.com"
 	},
+	"icon": "assets/icon.png",
 	"engines": {
 		"vscode": "^0.10.x"
 	},
