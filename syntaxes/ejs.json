@@ -59,7 +59,7 @@
 	],
 	"repository": {
 		"tag-comment": {
-			"begin": "<[%?)]#",
+			"begin": "<[%?]#",
 			"end": "[%?]>",
 			"name": "comment.block.ejs"
 		},
