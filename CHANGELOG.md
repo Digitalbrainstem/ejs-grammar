@@ -1,8 +1,12 @@
 # CHANGE LOG #
 
+## master ##
+
+Fixed single-line JS comments not being terminated correctly by an EJS closing tag. ([#28](https://github.com/Digitalbrainstem/ejs-grammar/issues/28))
+
 ## 0.4.4 ##
 
-Puiblished Untested Code. Rolling back.
+Published Untested Code. Rolling back.
 
 ## 0.4.1 ##
 
@@ -44,7 +48,7 @@ Update ReadMe
 
 ## 0.2.0 ##
 
-+ Feature: Allows support for alternate tags of EJS `<??>` now work. 
++ Feature: Allows support for alternate tags of EJS `<??>` now work.
 + Adding Changelog.
 
 *Note: Technically, `<?%>` OR `<%?>` works with this version. I need to comb through the code and make sure only matching pairs work. That is an item for down the road though.*
