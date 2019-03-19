@@ -3,6 +3,7 @@
 ## master ##
 
 Fixed single-line JS comments not being terminated correctly by an EJS closing tag. ([#28](https://github.com/Digitalbrainstem/ejs-grammar/issues/28))
+Fixed broken EJS inside HTML `<script>` and `<style>` elements ([#27](https://github.com/Digitalbrainstem/ejs-grammar/issues/27) and [#31](https://github.com/Digitalbrainstem/ejs-grammar/issues/31))
 
 ## 0.4.4 ##
 
