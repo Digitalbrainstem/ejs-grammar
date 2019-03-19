@@ -12,7 +12,7 @@
 				}
 			]
 		},
-		"L:meta.block.js - (comment.block, text.html.ejs.override-js)": {
+		"L:(* - meta.embedded.block.html) meta.block.js - (comment.block, text.html.ejs.override-js)": {
 			"patterns": [
 				{
 					"begin": "[_-]?(%|\\?)>",
@@ -97,6 +97,7 @@
 					"name": "punctuation.definition.tag.end.ejs"
 				}
 			},
+			"contentName": "source.js",
 			"patterns": [
 				{
 					"begin": "//",
