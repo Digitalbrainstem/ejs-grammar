@@ -19,7 +19,7 @@ If there is anything that I missed or features you would like this to include. [
 If you need documention on how to use EJS:
 
 [EJS Github](https://github.com/mde/ejs)
-[EJS Website](http://ejs.co/)
+[EJS Website](https://ejs.co/)
 
 ## For Devs ##
 
@@ -33,8 +33,8 @@ I know Textmate/tmLanguage documention is not well recorded. If anyone reading t
 
 + [sublime Text](https://www.sublimetext.com/docs/3/scope_naming.html)
 + [Lessons Learned](https://www.apeth.com/nonblog/stories/textmatebundle.html)
-+ [Textmate Manual](http://manual.macromates.com/en/language_grammars#language_grammars)
-+ [Textmate Blog](http://blog.macromates.com/2005/language-grammars/)
++ [Textmate Manual](https://macromates.com/manual/en/language_grammars#language_grammars)
++ [Textmate Blog](https://blog.macromates.com/2005/language-grammars/)
 + [Atom Discussion 1](https://discuss.atom.io/t/first-steps-to-build-a-language-highlight/12047/5)
 + [Atom Discussion 2](https://discuss.atom.io/t/syntax-theme-nested-elements-recursivity-for-pattern/36536/5)
 
