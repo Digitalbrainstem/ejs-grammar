@@ -41,7 +41,8 @@
 				"scopeName": "text.html.ejs",
 				"path": "./syntaxes/ejs.json",
 				"embeddedLanguages": {
-					"section.embedded.source.ejs": "ejs"
+					"source.css": "css",
+					"source.js": "javascript"
 				}
 			}
 		]
