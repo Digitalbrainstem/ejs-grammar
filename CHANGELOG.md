@@ -2,10 +2,13 @@
 
 ## master ##
 
-Fixed single-line JS comments not being terminated correctly by an EJS closing tag. ([#28](https://github.com/Digitalbrainstem/ejs-grammar/issues/28))
-Fixed broken EJS inside HTML `<script>` and `<style>` elements. ([#27](https://github.com/Digitalbrainstem/ejs-grammar/issues/27) and [#31](https://github.com/Digitalbrainstem/ejs-grammar/issues/31))
-Fixed surrounding a selection with JavaScript template literals.
-Fixed incorrect comments in HTML and JavaScript portions. ([#22](https://github.com/Digitalbrainstem/ejs-grammar/issues/22))
+- Fixed surrounding a selection with JavaScript template literals.
+
+## 0.5.0 ##
+
+- Fixed single-line JS comments not being terminated correctly by an EJS closing tag. ([#28](https://github.com/Digitalbrainstem/ejs-grammar/issues/28))
+- Fixed broken EJS inside HTML `<script>` and `<style>` elements. ([#27](https://github.com/Digitalbrainstem/ejs-grammar/issues/27) and [#31](https://github.com/Digitalbrainstem/ejs-grammar/issues/31))
+- Fixed incorrect comments in HTML and JavaScript portions. ([#22](https://github.com/Digitalbrainstem/ejs-grammar/issues/22))
 
 ## 0.4.4 ##
 
