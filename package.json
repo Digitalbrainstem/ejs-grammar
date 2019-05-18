@@ -44,6 +44,17 @@
 					"source.css": "css",
 					"source.js": "javascript"
 				}
+			},
+			{
+				"injectTo": [
+					"text.html.ejs"
+				],
+				"scopeName": "text.html.ejs.override-js",
+				"path": "./syntaxes/ejs-nested.json",
+				"embeddedLanguages": {
+					"text.html.ejs": "ejs",
+					"text.html.ejs.override-js": "ejs"
+				}
 			}
 		]
 	},

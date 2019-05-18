@@ -1,4 +1,5 @@
 {
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Embedded Javascript",
 	"scopeName": "text.html.ejs",
 	"injections": {
@@ -9,30 +10,6 @@
 				},
 				{
 					"include": "#tag-ejs"
-				}
-			]
-		},
-		"L:(* - meta.embedded.block.html) meta.block.js - (comment.block, text.html.ejs.override-js)": {
-			"patterns": [
-				{
-					"begin": "[_-]?(%|\\?)>",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.tag.end.ejs"
-						}
-					},
-					"end": "<(%|\\?)(?!%)[_=-]?",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.tag.begin.ejs"
-						}
-					},
-					"contentName": "text.html.ejs.override-js",
-					"patterns": [
-						{
-							"include": "text.html.ejs"
-						}
-					]
 				}
 			]
 		},
@@ -85,16 +62,22 @@
 			"name": "comment.block.ejs"
 		},
 		"tag-ejs": {
-			"begin": "<[%?][_=-]?",
+			"begin": "<([%?][_=-]?)",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.begin.ejs"
+				},
+				"1": {
+					"name": "source.js"
 				}
 			},
-			"end": "[_-]?[%?]>",
+			"end": "([_-]?[%?])>",
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.end.ejs"
+				},
+				"1": {
+					"name": "source.js"
 				}
 			},
 			"contentName": "source.js",

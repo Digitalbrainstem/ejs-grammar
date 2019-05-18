@@ -3,6 +3,7 @@
 ## master ##
 
 - Fixed surrounding a selection with JavaScript template literals.
+- Fixed language configuration within EJS blocks inside JavaScript code blocks.
 
 ## 0.5.0 ##
 
