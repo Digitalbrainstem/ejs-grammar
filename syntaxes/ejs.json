@@ -1,58 +1,13 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Embedded Javascript",
 	"scopeName": "text.html.ejs",
-	"injections": {
-		"L:meta.attribute - (string.quoted.*.html string.unquoted.html, source.js)": {
-			"patterns": [
-				{
-					"include": "#tag-comment"
-				},
-				{
-					"include": "#tag-ejs"
-				}
-			]
-		},
-		"R:text.html - (comment.block, text.html meta.embedded, meta.tag.*.*.html, meta.tag.*.*.*.html, meta.tag.*.*.*.*.html)": {
-			"comment": "Uses R: to ensure this matches after any other injections.",
-			"patterns": [
-				{
-					"include": "#tag-comment"
-				},
-				{
-					"match": "<",
-					"name": "invalid.illegal.bad-angle-bracket.html"
-				}
-			]
-		}
-	},
+	"injectionSelector": "L:text.html",
 	"patterns": [
 		{
-			"include": "text.html.basic#xml-processing"
+			"include":"#tag-comment"
 		},
 		{
-			"include": "text.html.basic#comment"
-		},
-		{
-			"include": "text.html.basic#doctype"
-		},
-		{
-			"include": "text.html.basic#cdata"
-		},
-		{
-			"include": "#tag-comment"
-		},
-		{
-			"include": "#tag-ejs"
-		},
-		{
-			"include": "text.html.basic#tags-valid"
-		},
-		{
-			"include": "text.html.basic#tags-invalid"
-		},
-		{
-			"include": "text.html.basic#entities"
+			"include": "#ejs-tag"
 		}
 	],
 	"repository": {
@@ -61,27 +16,39 @@
 			"end": "[%?]>",
 			"name": "comment.block.ejs"
 		},
-		"tag-ejs": {
-			"begin": "<([%?][_=-]?)",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.tag.begin.ejs"
+		"ejs-tag":{
+			"name": "text.block.ejs",
+			"begin": "(<[%?][_=-]?)",
+			"end":"([_-]?[%?]>)",
+			"beginCaptures":{ "1": { "name":"punctuation.definition.tag.begin.ejs"}},
+			"endCaptures":{ "1": { "name":"punctuation.definition.tag.end.ejs"}},
+			"patterns":[
+				
+				{
+					"begin": "((else)?.?(if))|(else)",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.conditional.js"
+						}
+					},
+					"end": "(?=[_-]?[%?]>)|\\n",
+					"name": "meta.block.js",
+					"patterns":[
+						{
+							"begin": "\\s*{",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.block.js"
+								}
+							},
+							"end": "(?=[_-]?[%?]>)|\\n",
+							"name": "punctuation.definition.block.js"
+						},
+						{
+							"include":"source.js"
+						}
+					]
 				},
-				"1": {
-					"name": "source.js"
-				}
-			},
-			"end": "([_-]?[%?])>",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.tag.end.ejs"
-				},
-				"1": {
-					"name": "source.js"
-				}
-			},
-			"contentName": "source.js",
-			"patterns": [
 				{
 					"begin": "//",
 					"beginCaptures": {
@@ -92,9 +59,11 @@
 					"end": "(?=[_-]?[%?]>)|\\n",
 					"name": "comment.line.double-slash.js"
 				},
+
 				{
-					"include": "source.js"
+					"include":"source.js"
 				}
+				
 			]
 		}
 	}

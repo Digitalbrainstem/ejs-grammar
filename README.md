@@ -3,6 +3,10 @@
 
 # EJS Language Support #
 
+### NOTICE: If you are not seeing any style, set your file associations for "*.ejs" to html ###
+
+- See CHANGELOG if you have issues with setting file.association
+
 Syntax highlighting for EJS, Javascript, and HTML tags. Includes javascript autocompletion.
 
 Please rate this and provide feedback for 2 reasons:
@@ -41,13 +45,6 @@ I know Textmate/tmLanguage documention is not well recorded. If anyone reading t
 #### History ####
 
 I wanted to start by utilizing other tmLanguage files that did things close to what EJS did. I tried starting with razor and PHP tmLanguage files from vscode. However, this ended up being more problimatic, as it would not do the things I wanted it to do. So I just started to write it from scratch to get it to work properly. The one thing I knew I did not want to do is have to write the others grammars definitions in this if I did not have to. I wanted to be able to utilize each of the embedded languages that were already created. This is more of a pain because you have to really have to think about the order things run and how regex and the tags work together. ALso recursion is huge to make it work properly. I am still learning, so if anyone has tips and tricks either let me know on twitter or github. I would love to here others that utilize this.
-
-## TO DO ##
-
-+ Create helpers to auto format code
-+ Add other tags from EJS
-+ Create routines for special instances of EJS.
-+ Add support for EJS inside of double quotes in html tags.
 
 ## Contributors ##
 
