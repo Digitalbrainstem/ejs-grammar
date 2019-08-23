@@ -4,7 +4,7 @@
 	"injectionSelector": "L:text.html",
 	"patterns": [
 		{
-			"include":"#tag-comment"
+			"include": "#tag-comment"
 		},
 		{
 			"include": "#ejs-tag"
@@ -12,21 +12,42 @@
 	],
 	"repository": {
 		"tag-comment": {
-			"begin": "(<[%?]#)",
-			"end": "([%?]>)",
-			"beginCaptures":{ "1": { "name":"punctuation.definition.comment.ejs"}},
-			"endCaptures":{ "1": { "name":"punctuation.definition.comment.ejs"}},
+			"begin": "<[%?]#",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.ejs"
+				}
+			},
+			"end": "[%?]>",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.ejs"
+				}
+			},
 			"name": "comment.block.ejs"
 		},
-		"ejs-tag":{
+		"ejs-tag": {
 			"contentName": "source.js",
 			"name": "text.block.ejs",
-			"begin": "(<[%?][_=-]?)",
-			"end":"([_-]?[%?]>)",
-			"beginCaptures":{ "1": { "name":"punctuation.definition.tag.begin.ejs"}},
-			"endCaptures":{ "1": { "name":"punctuation.definition.tag.end.ejs"}},
-			"patterns":[
-				
+			"begin": "<([%?][_=-]?)",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.tag.begin.ejs"
+				},
+				"1": {
+					"name": "source.js"
+				}
+			},
+			"end": "([_-]?[%?])>",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.tag.end.ejs"
+				},
+				"1": {
+					"name": "source.js"
+				}
+			},
+			"patterns": [
 				{
 					"begin": "((else)?.?(if))|(else)",
 					"beginCaptures": {
@@ -36,7 +57,7 @@
 					},
 					"end": "(?=[_-]?[%?]>)|\\n",
 					"name": "meta.block.js",
-					"patterns":[
+					"patterns": [
 						{
 							"begin": "\\s*{",
 							"beginCaptures": {
@@ -48,7 +69,7 @@
 							"name": "punctuation.definition.block.js"
 						},
 						{
-							"include":"source.js"
+							"include": "source.js"
 						}
 					]
 				},
@@ -62,11 +83,9 @@
 					"end": "(?=[_-]?[%?]>)|\\n",
 					"name": "comment.line.double-slash.js"
 				},
-
 				{
-					"include":"source.js"
+					"include": "source.js"
 				}
-				
 			]
 		}
 	}

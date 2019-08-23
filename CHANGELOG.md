@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## master ##
+
+- Fixed support for JavaScript comments using <kbd>ctrl+/</kbd> and <kbd>ctrl+shift+/</kbd> at EJS boundaries.
+
 ## 1.1.0 ##
 
 - Added support for javascript comments using ctrl+/
