@@ -18,7 +18,7 @@
 		},
 		"ejs-tag":{
 			"name": "text.block.ejs",
-			"begin": "(<[%?][_=-]?)",
+			"begin": "(<[%?](?:(?!php))[_=-]?)",
 			"end":"([_-]?[%?]>)",
 			"beginCaptures":{ "1": { "name":"punctuation.definition.tag.begin.ejs"}},
 			"endCaptures":{ "1": { "name":"punctuation.definition.tag.end.ejs"}},
