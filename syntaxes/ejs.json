@@ -12,11 +12,14 @@
 	],
 	"repository": {
 		"tag-comment": {
-			"begin": "<[%?]#",
-			"end": "[%?]>",
+			"begin": "(<[%?]#)",
+			"end": "([%?]>)",
+			"beginCaptures":{ "1": { "name":"punctuation.definition.comment.ejs"}},
+			"endCaptures":{ "1": { "name":"punctuation.definition.comment.ejs"}},
 			"name": "comment.block.ejs"
 		},
 		"ejs-tag":{
+			"contentName": "source.js",
 			"name": "text.block.ejs",
 			"begin": "(<[%?][_=-]?)",
 			"end":"([_-]?[%?]>)",

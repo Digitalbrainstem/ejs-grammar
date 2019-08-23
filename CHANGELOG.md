@@ -1,5 +1,10 @@
 # CHANGE LOG #
 
+## 1.1.0 ##
+
+- Added support for javascript comments using ctrl+/
+
+
 ## 1.0.0 ##
 
 ### Major UPDATE ###
