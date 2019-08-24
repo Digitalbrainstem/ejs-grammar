@@ -2,6 +2,10 @@
 
 ## 1.1.1 ##
 
+- Fixed support for JavaScript loops within EJS.
+
+## 1.1.1 ##
+
 - Fixed support for JavaScript comments using <kbd>ctrl+/</kbd> and <kbd>ctrl+shift+/</kbd> at EJS boundaries.
 
 ## 1.1.0 ##

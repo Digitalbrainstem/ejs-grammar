@@ -49,10 +49,16 @@
 			},
 			"patterns": [
 				{
-					"begin": "((else)?.?(if))|(else)",
+					"begin": "((else)?.?(if))|(else)|(while)|(for)",
 					"beginCaptures": {
 						"0": {
 							"name": "keyword.control.conditional.js"
+						},
+						"5": {
+							"name": "keyword.control.loop.js"
+						},
+						"6": {
+							"name": "keyword.control.loop.js"
 						}
 					},
 					"end": "(?=[_-]?[%?]>)|\\n",
