@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 1.1.3 ##
+
+- Prevent running under PHP.
+
 ## 1.1.2 ##
 
 - Fixed support for JavaScript loops within EJS.

@@ -29,7 +29,7 @@
 		"ejs-tag": {
 			"contentName": "source.js",
 			"name": "text.block.ejs",
-			"begin": "<([%?][_=-]?)",
+			"begin": "<([%?](?:(?!php))[_=-]?)",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.begin.ejs"
