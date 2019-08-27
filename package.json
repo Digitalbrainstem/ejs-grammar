@@ -1,8 +1,8 @@
 {
 	"name": "javascript-ejs-support",
 	"displayName": "EJS language support",
-	"description": "2018 - EJS language support for Visual Studio Code.",
-	"version": "0.5.0",
+	"description": "2019 - EJS language support for Visual Studio Code.",
+	"version": "1.1.3",
 	"license": "MIT",
 	"icon": "assets/icon.png",
 	"publisher": "DigitalBrainstem",
@@ -96,6 +96,11 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	},
+	"__metadata": {
+		"id": "9cd87837-c82a-4817-9b79-1c84775aa158",
+		"publisherId": "8a82c29a-f974-4692-be63-35a118c52919",
+		"publisherDisplayName": "DigitalBrainstem"
 	},
 	"dependencies": {
 		"vscode": "^1.18.x",

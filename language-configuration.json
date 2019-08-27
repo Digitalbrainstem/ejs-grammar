@@ -1,7 +1,7 @@
 {
 	"comments": {
 		// symbols used for start and end of a block comment.
-		"blockComment": [ "<%#", "%>" ],
+		"blockComment": [ "<%#", "%>", "<%/*", "*/%>", "<?#", "?>", "<?/*", "*/?>" ],
 	},
 
 	// symbols used as brackets
@@ -40,8 +40,8 @@
 
 	"folding": {
 		"markers": {
-			"start": "^\\s*(?:<%#(?:\\s*#)?region\\b.*%>|<!--\\s*#region\\b.*-->)",
-			"end": "^\\s*(?:<%#(?:\\s*#)?endregion\\b.*%>|<!--\\s*#endregion\\b.*-->)",
+			"start": "^\\s*(?:<[%?][_-#]?(?:\\s*#)?region\\b.*[_-#]?[%?]>|<!--\\s*#region\\b.*-->)",
+			"end": "^\\s*(?:<[%?][_-#]?(?:\\s*#)?endregion\\b.*[_-#]?[%?]>|<!--\\s*#endregion\\b.*-->)",
 		}
 	}
 }

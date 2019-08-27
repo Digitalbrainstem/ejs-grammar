@@ -58,11 +58,23 @@
 	"repository": {
 		"tag-comment": {
 			"begin": "<[%?]#",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.ejs"
+				}
+			},
 			"end": "[%?]>",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.comment.ejs"
+				}
+			},
 			"name": "comment.block.ejs"
 		},
-		"tag-ejs": {
-			"begin": "<([%?][_=-]?)",
+		"ejs-tag": {
+			"contentName": "source.js",
+			"name": "text.block.ejs",
+			"begin": "<([%?](?:(?!php))[_=-]?)",
 			"beginCaptures": {
 				"0": {
 					"name": "punctuation.definition.tag.begin.ejs"
@@ -80,8 +92,38 @@
 					"name": "source.js"
 				}
 			},
-			"contentName": "source.js",
 			"patterns": [
+				{
+					"begin": "((else)?.?(if))|(else)|(while)|(for)",
+					"beginCaptures": {
+						"0": {
+							"name": "keyword.control.conditional.js"
+						},
+						"5": {
+							"name": "keyword.control.loop.js"
+						},
+						"6": {
+							"name": "keyword.control.loop.js"
+						}
+					},
+					"end": "(?=[_-]?[%?]>)|\\n",
+					"name": "meta.block.js",
+					"patterns": [
+						{
+							"begin": "\\s*{",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.definition.block.js"
+								}
+							},
+							"end": "(?=[_-]?[%?]>)|\\n",
+							"name": "punctuation.definition.block.js"
+						},
+						{
+							"include": "source.js"
+						}
+					]
+				},
 				{
 					"begin": "//",
 					"beginCaptures": {
