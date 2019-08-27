@@ -22,8 +22,7 @@
 		"syntax highlighting"
 	],
 	"scripts": {
-		"vscode:prepublish": "tsc -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install"
+		"vscode:prepublish": "tsc -p ./"
 	},
 	"activationEvents": [
 		"onLanguage:ejs"
@@ -103,12 +102,13 @@
 		"publisherDisplayName": "DigitalBrainstem"
 	},
 	"dependencies": {
-		"vscode": "^1.18.x",
 		"vscode-languageclient": "^3.5.0",
 		"vscode-languageserver": "^4.1.2"
 	},
 	"devDependencies": {
 		"@types/node": "^10.0.0",
-		"typescript": "^2.8.3"
+		"@types/vscode": "1.18.x",
+		"typescript": "^3.5.3",
+		"vscode-test": "^1.2.0"
 	}
 }
