@@ -71,7 +71,7 @@
 			},
 			"name": "comment.block.ejs"
 		},
-		"ejs-tag": {
+		"tag-ejs": {
 			"contentName": "source.js",
 			"name": "text.block.ejs",
 			"begin": "<([%?](?:(?!php))[_=-]?)",
