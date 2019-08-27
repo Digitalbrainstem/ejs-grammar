@@ -1,5 +1,20 @@
 # CHANGE LOG #
 
+## master ##
+
+- Fixed surrounding a selection with JavaScript template literals.
+- Fixed language configuration within EJS blocks inside JavaScript code blocks.
+
+## 0.5.0 ##
+
+- Fixed single-line JS comments not being terminated correctly by an EJS closing tag. ([#28](https://github.com/Digitalbrainstem/ejs-grammar/issues/28))
+- Fixed broken EJS inside HTML `<script>` and `<style>` elements. ([#27](https://github.com/Digitalbrainstem/ejs-grammar/issues/27) and [#31](https://github.com/Digitalbrainstem/ejs-grammar/issues/31))
+- Fixed incorrect comments in HTML and JavaScript portions. ([#22](https://github.com/Digitalbrainstem/ejs-grammar/issues/22))
+
+## 0.4.4 ##
+
+Published Untested Code. Rolling back.
+
 ## 0.4.1 ##
 
 No Code changes. Correcting information so those who help get properly recognized
@@ -8,9 +23,9 @@ No Code changes. Correcting information so those who help get properly recognize
 
 Fixing bugs and a major rewrite! Thanks to [@ExE-Boss](https://github.com/ExE-Boss).
 
-+ Fixes #3
-+ Fixes #7
-+ Fixes #20
++ Fixes [#3](https://github.com/Digitalbrainstem/ejs-grammar/issues/3)
++ Fixes [#7](https://github.com/Digitalbrainstem/ejs-grammar/issues/7)
++ Fixes [#20](https://github.com/Digitalbrainstem/ejs-grammar/issues/20)
 
 ## 0.3.2 ##
 
@@ -22,11 +37,11 @@ Fixing spelling mistake!
 
 ## 0.3.0 ##
 
-Thanks to @meesfrensel Added new auto close pair and other various corrections.
+Thanks to [@meesfrensel](https://github.com/meesfrensel) Added new auto close pair and other various corrections.
 
 ## 0.2.3 ##
 
-Issue #6: Fix erronious indentation on new line.
+Issue [#6](https://github/Digitalbrainstem/ejs-grammar/issues/6): Fix errornous indentation on new line.
 
 ## 0.2.2 ##
 
@@ -40,7 +55,7 @@ Update ReadMe
 
 ## 0.2.0 ##
 
-+ Feature: Allows support for alternate tags of EJS `<??>` now work. 
++ Feature: Allows support for alternate tags of EJS `<??>` now work.
 + Adding Changelog.
 
 *Note: Technically, `<?%>` OR `<%?>` works with this version. I need to comb through the code and make sure only matching pairs work. That is an item for down the road though.*
