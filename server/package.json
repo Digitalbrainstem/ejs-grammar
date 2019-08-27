@@ -1,0 +1,24 @@
+{
+	"name": "ejs-support-server",
+	"description": "EJS Language server",
+	"version": "0.0.0",
+	"license": "MIT",
+	"author": {
+		"name": "Derek Thomas",
+		"email": "Derek@digitalbrainstem.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	},
+	"engines": {
+		"node": "*"
+	},
+	"main": "./out/server.js",
+	"dependencies": {
+		"vscode-languageserver": "^5.2.1"
+	},
+	"devDependencies": {
+		"@types/vscode": "1.30.x"
+	}
+}

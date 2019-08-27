@@ -1,0 +1,21 @@
+{
+	"name": "ejs-support-client",
+	"description": "EJS Language Client",
+	"version": "0.0.0",
+	"license": "MIT",
+	"author": {
+		"name": "Derek Thomas",
+		"email": "Derek@digitalbrainstem.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Digitalbrainstem/ejs-grammar.git"
+	},
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"dependencies": {
+		"@types/vscode": "1.30.x",
+		"vscode-languageclient": "^5.2.1"
+	}
+}

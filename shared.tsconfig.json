@@ -4,16 +4,12 @@
 		"noUnusedParameters": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
-		"target": "es6",
+		"target": "es2017",
 		"module": "commonjs",
 		"moduleResolution": "node",
-		"rootDir": ".",
-		"outDir": "out",
-		"lib": [ "es2016" ],
-		"sourceMap": true
+		"lib": ["es2017"],
+		"sourceMap": true,
+		"declaration": true
 	},
-	"exclude": [
-		"node_modules",
-		"server"
-	]
+	"exclude": [".vscode-test", "node_modules", "out"]
 }

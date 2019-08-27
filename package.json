@@ -11,7 +11,7 @@
 		"email": "Derek@digitalbrainstem.com"
 	},
 	"engines": {
-		"vscode": "^1.18.x"
+		"vscode": "^1.30.x"
 	},
 	"categories": [
 		"Programming Languages"
@@ -22,12 +22,15 @@
 		"syntax highlighting"
 	],
 	"scripts": {
-		"vscode:prepublish": "tsc -p ./"
+		"vscode:prepublish": "npm run build",
+		"build": "run-p build:client build:server",
+		"build:client": "tsc -p ./client/tsconfig.json",
+		"build:server": "tsc -p ./server/tsconfig.json"
 	},
 	"activationEvents": [
 		"onLanguage:ejs"
 	],
-	"main": "./out/src/extension",
+	"main": "./client/out/extension.js",
 	"contributes": {
 		"languages": [
 			{
@@ -101,13 +104,9 @@
 		"publisherId": "8a82c29a-f974-4692-be63-35a118c52919",
 		"publisherDisplayName": "DigitalBrainstem"
 	},
-	"dependencies": {
-		"vscode-languageclient": "^3.5.0",
-		"vscode-languageserver": "^4.1.2"
-	},
 	"devDependencies": {
 		"@types/node": "^10.0.0",
-		"@types/vscode": "1.18.x",
+		"npm-run-all": "^4.1.5",
 		"typescript": "^3.5.3",
 		"vscode-test": "^1.2.0"
 	}

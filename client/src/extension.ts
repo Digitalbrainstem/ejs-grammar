@@ -11,7 +11,7 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } f
 
 export function activate(context: ExtensionContext) {
 	// Get path to server.js (using path.join for platform-specific delimiters, e.g. / or \)
-	const serverModule = context.asAbsolutePath(path.join('out', 'src', 'server.js'));
+	const serverModule = context.asAbsolutePath(path.join('server'));
 
 	// Server options used in debug mode
 	const debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
@@ -39,7 +39,7 @@ export function activate(context: ExtensionContext) {
 		new LanguageClient('ejs-support-client', 'EJS language support extension', serverOptions, clientOptions)
 			.start();
 
-	// Push the disposable to the context's subscriptions so that the 
+	// Push the disposable to the context's subscriptions so that the
 	// client will be deactivated on extension deactivation
 	context.subscriptions.push(disposable);
 
