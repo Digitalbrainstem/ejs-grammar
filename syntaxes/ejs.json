@@ -4,14 +4,20 @@
 	"injectionSelector": "L:text.html",
 	"patterns": [
 		{
-			"include": "#tag-comment"
+			"include": "#tag-block-comment1"
 		},
 		{
-			"include": "#tag-ejs"
+			"include": "#tag-block-comment2"
+		},
+		{
+			"include": "#tag-ejs-single-line"
+		},
+		{
+			"include": "#tag-ejs-multi-line"
 		}
 	],
 	"repository": {
-		"tag-comment": {
+		"tag-block-comment1": {
 			"begin": "<[%?]#",
 			"beginCaptures": {
 				"0": {
@@ -26,71 +32,78 @@
 			},
 			"name": "comment.block.ejs"
 		},
-		"tag-ejs": {
-			"contentName": "source.js",
-			"name": "text.block.ejs",
-			"begin": "<([%?](?:(?!php))[_=-]?)",
+		"tag-block-comment2": {
+			"begin": "(<[%?](?:(?!php)))(\\s)*\\/\\*",
 			"beginCaptures": {
 				"0": {
-					"name": "punctuation.definition.tag.begin.ejs"
-				},
-				"1": {
-					"name": "source.js"
+					"name": "punctuation.definition.comment.ejs"
 				}
 			},
-			"end": "([_-]?[%?])>",
+			"end": "\\*\\/(\\s)*([%?]>)",
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.definition.tag.end.ejs"
-				},
-				"1": {
-					"name": "source.js"
+					"name": "punctuation.definition.comment.ejs"
 				}
 			},
-			"patterns": [
-				{
-					"begin": "((else)?.?(if))|(else)|(while)|(for)",
-					"beginCaptures": {
-						"0": {
-							"name": "keyword.control.conditional.js"
-						},
-						"5": {
-							"name": "keyword.control.loop.js"
-						},
-						"6": {
-							"name": "keyword.control.loop.js"
-						}
-					},
-					"end": "(?=[_-]?[%?]>)|\\n",
-					"name": "meta.block.js",
-					"patterns": [
+			"name": "comment.block.ejs"
+		},
+		"tag-ejs-single-line": {
+			
+			"name": "meta.tag.metadata.script.ejs",
+			"begin":"(<[%?](?:(?!php))[_=-]?)(.+)(?=([_-]?[%?]>))",
+			"beginCaptures": {
+				"0": {
+					"name": "meta.embedded.*"
+				},
+				"1": {
+					"name": "punctuation.definition.tag.begin.ejs"
+				},
+				"2": {
+					"name": "meta.embedded.ejs",
+					"contentName": "source.js",
+					"patterns":[
 						{
-							"begin": "\\s*{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.definition.block.js"
-								}
-							},
-							"end": "(?=[_-]?[%?]>)|\\n",
-							"name": "punctuation.definition.block.js"
-						},
-						{
-							"include": "source.js"
+							"include":"source.js"
 						}
 					]
 				},
-				{
-					"begin": "//",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.comment.js"
-						}
-					},
-					"end": "(?=[_-]?[%?]>)|\\n",
-					"name": "comment.line.double-slash.js"
+				"3": {
+					"name": "punctuation.definition.tag.end.ejs"
+				}
+			},
+			"end": "(([_-]?[%?]>))",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.end.ejs"
+				}
+			}
+		},
+		"tag-ejs-multi-line": {
+			"name": "meta.block.ejs",
+			"begin":"(<[%?](?:(?!php))[_=-]?)(.*)((?=([_-]?[%?]>))\r|\n)",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.begin.ejs"
 				},
+				"2": {
+					"name": "meta.embedded.ejs",
+					"contentName": "source.js",
+					"patterns":[
+						{
+							"include":"source.js"
+						}
+					]
+				}
+			},
+			"end": "(([_-]?[%?]>))",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.end.ejs"
+				}
+			},
+			"patterns":[
 				{
-					"include": "source.js"
+					"include":"source.js"
 				}
 			]
 		}
