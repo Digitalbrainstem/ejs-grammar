@@ -79,6 +79,7 @@
 			}
 		},
 		"tag-ejs-multi-line": {
+			"contentName":"source.js",
 			"name": "meta.block.ejs",
 			"begin":"(<[%?](?:(?!php))[_=-]?)(.*)((?=([_-]?[%?]>))\r|\n)",
 			"beginCaptures": {
