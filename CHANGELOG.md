@@ -1,5 +1,16 @@
 # CHANGE LOG #
 
+## 1.2.1 ##
+
+- Add support for comment sections
+- Thanks to [@illz](https://github.com/illz) for verfication.
+
+```html
+<% /* %>
+Anything here will be commented out
+<% */ %>
+```
+
 ## 1.2.0 ##
 
 - Add Snippet support
