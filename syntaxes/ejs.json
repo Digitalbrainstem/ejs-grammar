@@ -7,10 +7,16 @@
 			"include": "#tag-block-comment"
 		},
 		{
-			"include": "#tag-ejs-single-line"
+			"include": "#tag-single-line-section-comment"
 		},
 		{
-			"include": "#tag-ejs-multi-line"
+			"include":"#tag-section-comment"
+		},
+		{
+			"include":"#tag-ejs-single-line"
+		},
+		{
+			"include":"#tag-ejs-multi-line"
 		}
 	],
 	"repository": {
@@ -29,10 +35,58 @@
 			},
 			"name": "comment.block.ejs"
 		},
+		"tag-single-line-section-comment": {
+			"begin": "(<[%?](?:(?!php))[%_=-]?)\\s*((\/\\*)(.*)(\\*\/))(?=(\\s*([%?]>)))",
+			"captures": {
+				"1": {
+					"name": "punctuation.definition.tag.begin.ejs"
+				},
+				"3": {
+					"name": "punctuation.definition.comment.ejs"
+				},
+				"5": {
+					"name": "punctuation.definition.comment.ejs"
+				},
+				"2": {
+					"name": "comment.block.ejs"
+				}
+			},
+			"end": "([%?]>)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.end.ejs"
+				}
+			},
+			"contentName": "comment.block.ejs",
+			"name":"meta.block.single.comment.ejs"
+		},
+		"tag-section-comment": {
+			"name":"comment.block.ejs",
+			"begin":"(<[%?])\\s*((?=(\/\\*)))",
+			"beginCaptures": {
+				"1": {
+					"name": "punctuation.definition.tag.begin.ejs"
+				}
+			},
+			"end": "(\\*\/)\\s*([%?]>)",
+			"endCaptures": {
+				"1": {
+					"name": "punctuation.definition.comment.ejs"
+				},
+				"2": {
+					"name": "punctuation.definition.tag.end.ejs"
+				}
+			},
+			"patterns":[
+				{
+					"include":"text.html.ejs"
+				}
+			]
+		},		
 		"tag-ejs-single-line": {
 			
 			"name": "meta.tag.metadata.script.ejs",
-			"begin":"(<[%?](?:(?!php))[%_=-]?)(.+)(?=([_-]?[%?]>))",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))(.+)(?=([_-]?[%?]>))",
 			"beginCaptures": {
 				"0": {
 					"contentName":"source.js",
@@ -41,7 +95,7 @@
 				"1": {
 					"name": "punctuation.definition.tag.begin.ejs"
 				},
-				"2": {
+				"3": {
 					"name": "meta.embedded.ejs",
 					"contentName": "source.js",
 					"patterns":[
@@ -50,7 +104,7 @@
 						}
 					]
 				},
-				"3": {
+				"4": {
 					"name": "punctuation.definition.tag.end.ejs"
 				}
 			},
@@ -64,12 +118,12 @@
 		"tag-ejs-multi-line": {
 			"contentName":"source.js",
 			"name": "meta.block.ejs",
-			"begin":"(<[%?](?:(?!php))[%_=-]?)",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.definition.tag.begin.ejs"
 				},
-				"2": {
+				"3": {
 					"name": "meta.embedded.ejs",
 					"contentName": "source.js",
 					"patterns":[
