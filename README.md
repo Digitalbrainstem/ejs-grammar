@@ -18,6 +18,34 @@ If there is anything that I missed or features you would like this to include. [
 
 *NOTE: This is in early development; however, it does provide greater functionality than the other ejs language supports.*
 
+## Features
+
+***If snippets do not show up, add the following to your settings file***
+
+```json
+    "emmet.includeLanguages": {
+        "ejs": "html",
+    },
+```
+
+**Snippets are found below.**
+
+→ Denotes the `TAB` key.
+
+| Snippet→   | Alternate  | Output                                                                                                  |
+| ---------- | --------   | ------------------------------------------------------------------------------------------------------- |
+| `ejs→`     | `<%`       | `<% %>` - No output tag                                                                                 |
+| `ejsout→`  | `<%=`      | `<%= %>` - Outputs HTML value                                                                           |
+| `ejsesc→`  | `<%-`      | `<%- %>` - Outputs unescaped                                                                            |
+| `ejscom→`  | `<%#`      | `<%# %>` - Comment tag                                                                                  |
+| `ejslit→`  | `<%%`      | `<%% %>` - Outputs Literal <%                                                                           |
+| `ejsinc→`  | `<%`       | `include` statement                                                                                       |
+| `ejsfor→`  | `<%`       | `for` Javascript Loop                                                                                             |
+| `ejseach→` | `<%`       | `forEach` Javascript Loop                                                                                     |
+| `ejsif→`   | `<%`       | `if` Statement with condition                                                                                     |
+| `ejselif→` | `<%`       | `else if` Statement - *Middle section only.* Assumes you have already written the first `if` statement. |
+| `ejselse→` | `<%`       | `else` Statement - *Middle section only.* Assumes you have already written the first `if` statement.    |
+
 ## EJS docs ##
 
 If you need documention on how to use EJS:
@@ -50,6 +78,7 @@ I wanted to start by utilizing other tmLanguage files that did things close to w
 
 + [@meesfrensel](https://github.com/meesfrensel)
 + [@ExE-Boss](https://github.com/ExE-Boss)
++ Orginal Snippet Library [@theranbrig](https://github.com/theranbrig) [Code](https://github.com/theranbrig/ejs-snippets
 
 ## Contact ##
 

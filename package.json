@@ -2,7 +2,7 @@
 	"name": "javascript-ejs-support",
 	"displayName": "EJS language support",
 	"description": "2019 - EJS language support for Visual Studio Code.",
-	"version": "1.1.3",
+	"version": "1.2.0",
 	"license": "MIT",
 	"icon": "assets/icon.png",
 	"publisher": "DigitalBrainstem",
@@ -35,9 +35,18 @@
 				}
 			}
 		],
+		"snippets": [
+			{
+				"language": "html",
+				"path": "./snippets/snippets.json"
+			}
+		],
 		"configurationDefaults": {
 			"files.associations": {
 				"*.ejs": "html"
+			},
+			"emmet.includeLanguages": {
+				"ejs": "html"
 			}
 		}
 	},
