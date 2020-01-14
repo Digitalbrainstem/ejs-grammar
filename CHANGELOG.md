@@ -1,5 +1,27 @@
 # CHANGE LOG #
 
+## 1.2.0 ##
+
+- Add Snippet support
+- Thanks to [@theranbrig](https://github.com/theranbrig) for initial snippet support.
+- If snippets are not working add the following to your setting.json file
+
+```json
+    "emmet.includeLanguages": {
+        "ejs": "html",
+    },
+```
+
+## 1.1.5 ##
+
+- Fixed Block comment on line with ejs control variable
+- Add support for ejs litteral `<%%`
+
+## 1.1.4 ##
+
+- Add support for conditional loops
+- ReWrite to allow better html injection.
+
 ## 1.1.3 ##
 
 - Prevent running under PHP.

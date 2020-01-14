@@ -4,10 +4,7 @@
 	"injectionSelector": "L:text.html",
 	"patterns": [
 		{
-			"include": "#tag-block-comment1"
-		},
-		{
-			"include": "#tag-block-comment2"
+			"include": "#tag-block-comment"
 		},
 		{
 			"include": "#tag-ejs-single-line"
@@ -17,7 +14,7 @@
 		}
 	],
 	"repository": {
-		"tag-block-comment1": {
+		"tag-block-comment": {
 			"begin": "<[%?]#",
 			"beginCaptures": {
 				"0": {
@@ -32,27 +29,13 @@
 			},
 			"name": "comment.block.ejs"
 		},
-		"tag-block-comment2": {
-			"begin": "(<[%?](?:(?!php)))(\\s)*\\/\\*",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.definition.comment.ejs"
-				}
-			},
-			"end": "\\*\\/(\\s)*([%?]>)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.comment.ejs"
-				}
-			},
-			"name": "comment.block.ejs"
-		},
 		"tag-ejs-single-line": {
 			
 			"name": "meta.tag.metadata.script.ejs",
-			"begin":"(<[%?](?:(?!php))[_=-]?)(.+)(?=([_-]?[%?]>))",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)(.+)(?=([_-]?[%?]>))",
 			"beginCaptures": {
 				"0": {
+					"contentName":"source.js",
 					"name": "meta.embedded.*"
 				},
 				"1": {
@@ -81,7 +64,7 @@
 		"tag-ejs-multi-line": {
 			"contentName":"source.js",
 			"name": "meta.block.ejs",
-			"begin":"(<[%?](?:(?!php))[_=-]?)(.*)((?=([_-]?[%?]>))\r|\n)",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.definition.tag.begin.ejs"
