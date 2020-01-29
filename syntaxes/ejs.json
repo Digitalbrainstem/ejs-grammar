@@ -104,7 +104,7 @@
 		"tag-ejs-single-line": {
 			
 			"name": "meta.tag.metadata.script.ejs",
-			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))(.+)(?=([_-]?[%?]>))",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))(((?!([_-]?[%?]>)).)+)(?=([_-]?[%?]>))",
 			"beginCaptures": {
 				"0": {
 					"contentName":"source.js",
@@ -122,7 +122,7 @@
 						}
 					]
 				},
-				"4": {
+				"6": {
 					"name": "keyword.operator.relational.js"
 				}
 			},

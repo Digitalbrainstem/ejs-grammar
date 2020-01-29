@@ -1,5 +1,15 @@
 # CHANGE LOG #
 
+## 1.3.1 ##
+
+- Fix single lines with mutliple ejs tags. 
+- Before: script would not capture inner tag causing " to be js not html. 
+
+```html
+<button class="<% ... %>"><% ... %></button>
+
+```
+
 ## 1.3.0 ##
 
 - Change ejs tag type so they stand out in html code.
