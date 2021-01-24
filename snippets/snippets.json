@@ -9,35 +9,35 @@
   "EJS Output Value": {
     "prefix": "ejsout",
     "body": [
-      "<%= $1 %> $2"
+      "<%= $1 %>$2"
     ],
     "description": "EJS outputs no value"
   },
   "EJS Output Escaped": {
     "prefix": "ejsesc",
     "body": [
-      "<%- $1 %> $2"
+      "<%- $1 %>$2"
     ],
     "description": "EJS outputs value"
   },
   "EJS Comment": {
     "prefix": "ejscom",
     "body": [
-      "<%# $1 %> $2"
+      "<%# $1 %>$2"
     ],
     "description": "EJS comment tag with no output"
   },
   "EJS Literal": {
     "prefix": "ejslit",
     "body": [
-      "<%% $1 %> $2"
+      "<%% $1 %>$2"
     ],
     "description": "EJS outputs a literal '<%'"
   },
   "EJS Include": {
     "prefix": "ejsinc",
     "body": [
-      "<% include $1 %> $2"
+      "<% include $1 %>$2"
     ],
     "description": "EJS include statement"
   },
@@ -87,42 +87,42 @@
   "EJS TAG": {
     "prefix": "<%",
     "body": [
-      "<% $1 %> $2"
+      "<% $1 %>$2"
     ],
     "description": "EJS No Output"
   },
   "EJS TAG Output Value": {
     "prefix": "<%=",
     "body": [
-      "<%= $1 %> $2"
+      "<%= $1 %>$2"
     ],
     "description": "EJS outputs no value"
   },
   "EJS TAG Output Escaped": {
     "prefix": "<%-",
     "body": [
-      "<%- $1 %> $2"
+      "<%- $1 %>$2"
     ],
     "description": "EJS outputs value"
   },
   "EJS TAG Comment": {
     "prefix": "<%#",
     "body": [
-      "<%# $1 %> $2"
+      "<%# $1 %>$2"
     ],
     "description": "EJS comment tag with no output"
   },
   "EJS TAG Literal": {
     "prefix": "<%%",
     "body": [
-      "<%% $1 %> $2"
+      "<%% $1 %>$2"
     ],
     "description": "EJS outputs a literal '<%'"
   },
   "EJS TAG Include": {
     "prefix": "<% ",
     "body": [
-      "<% include $1 %> $2"
+      "<% include $1 %>$2"
     ],
     "description": "EJS include statement"
   },
