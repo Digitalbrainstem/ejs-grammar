@@ -2,7 +2,7 @@
   "EJS No Output": {
     "prefix": "ejs",
     "body": [
-      "<% $1 %> $2"
+      "<% $1 %>$2"
     ],
     "description": "EJS No Output"
   },
@@ -84,7 +84,6 @@
     ],
     "description": "EJS if statement"
   },
-
   "EJS TAG": {
     "prefix": "<%",
     "body": [
