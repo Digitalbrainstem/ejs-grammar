@@ -168,5 +168,14 @@
       " $2"
     ],
     "description": "EJS if statement"
+  },
+  "EJS For...Of Loop": {
+    "prefix": ["ejsof", "<%"],
+    "body": [
+      "<% for (const ${1:variable} of ${2:iterable}) { %>", 
+      "  $3",
+      "<% } %>"
+    ],
+    "description": "EJS For...Of Loop"
   }
 }

@@ -42,6 +42,7 @@ If there is anything that I missed or features you would like this to include. [
 | `ejsinc→`  | `<%`       | `include` statement                                                                                       |
 | `ejsfor→`  | `<%`       | `for` Javascript Loop                                                                                             |
 | `ejseach→` | `<%`       | `forEach` Javascript Loop                                                                                     |
+| `ejsof→`   | `<%`       | `for...of` JavaScript Loop                                                                              |
 | `ejsif→`   | `<%`       | `if` Statement with condition                                                                                     |
 | `ejselif→` | `<%`       | `else if` Statement - *Middle section only.* Assumes you have already written the first `if` statement. |
 | `ejselse→` | `<%`       | `else` Statement - *Middle section only.* Assumes you have already written the first `if` statement.    |
