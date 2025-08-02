@@ -32,20 +32,20 @@ If there is anything that I missed or features you would like this to include. [
 
 → Denotes the `TAB` key.
 
-| Snippet→   | Alternate  | Output                                                                                                  |
-| ---------- | --------   | ------------------------------------------------------------------------------------------------------- |
-| `ejs→`     | `<%`       | `<% %>` - No output tag                                                                                 |
-| `ejsout→`  | `<%=`      | `<%= %>` - Outputs HTML value                                                                           |
-| `ejsesc→`  | `<%-`      | `<%- %>` - Outputs unescaped                                                                            |
-| `ejscom→`  | `<%#`      | `<%# %>` - Comment tag                                                                                  |
-| `ejslit→`  | `<%%`      | `<%% %>` - Outputs Literal <%                                                                           |
-| `ejsinc→`  | `<%`       | `include` statement                                                                                       |
-| `ejsfor→`  | `<%`       | `for` Javascript Loop                                                                                             |
-| `ejseach→` | `<%`       | `forEach` Javascript Loop                                                                                     |
-| `ejsof→`   | `<%`       | `for...of` JavaScript Loop                                                                              |
-| `ejsif→`   | `<%`       | `if` Statement with condition                                                                                     |
-| `ejselif→` | `<%`       | `else if` Statement - *Middle section only.* Assumes you have already written the first `if` statement. |
-| `ejselse→` | `<%`       | `else` Statement - *Middle section only.* Assumes you have already written the first `if` statement.    |
+| Snippet    | Alternate | Output                                                   |
+| ---------- | --------- | -------------------------------------------------------- |
+| `ejs→`     | `<%`      | `<% %>` – No output tag                                  |
+| `ejsesc→`  | `<%=`     | `<%= %>` – Output **escaped** value                      |
+| `ejsraw→`  | `<%-`     | `<%- %>` – Output **raw/unescaped** value (injects HTML) |
+| `ejscom→`  | `<%#`     | `<%# %>` – Comment, no output                            |
+| `ejslit→`  | `<%%`     | `<%% %>` – Output literal `<%`                           |
+| `ejsinc→`  | `<%`      | `<%- include() %>` – Include another file                |
+| `ejsfor→`  | `<%`      | `for` loop – Index-based                                 |
+| `ejsof→`   | `<%`      | `for...of` loop – Iterable-based                         |
+| `ejseach→` | `<%`      | `.forEach()` loop – Array iteration                      |
+| `ejsif→`   | `<%`      | `if` statement                                           |
+| `ejselif→` | `<%`      | `else if` statement _Middle section only_                |
+| `ejselse→` | `<%`      | `else` statement                                         |
 
 ## EJS docs ##
 
