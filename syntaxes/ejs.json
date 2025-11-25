@@ -13,10 +13,7 @@
 			"include":"#tag-section-comment"
 		},
 		{
-			"include":"#tag-ejs-single-line"
-		},
-		{
-			"include":"#tag-ejs-multi-line"
+			"include":"#tag-ejs"
 		}
 	],
 	"repository": {
@@ -101,60 +98,19 @@
 				}
 			]
 		},		
-		"tag-ejs-single-line": {
-			
-			"name": "meta.tag.metadata.script.ejs",
-			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))(((?!([_-]?[%?]>)).)+)(?=([_-]?[%?]>))",
-			"beginCaptures": {
-				"0": {
-					"contentName":"source.js",
-					"name": "meta.embedded.*"
-				},
-				"1": {
-					"name": "keyword.operator.relational.js"
-				},
-				"3": {
-					"name": "meta.embedded.ejs",
-					"contentName": "source.js",
-					"patterns":[
-						{
-							"include":"source.js"
-						}
-					]
-				},
-				"6": {
-					"name": "keyword.operator.relational.js"
-				}
-			},
-			"end": "(([_-]?[%?]>))",
-			"endCaptures": {
-				"1": {
-					"name": "keyword.operator.relational.js"
-				}
-			}
-		},
-		"tag-ejs-multi-line": {
+		"tag-ejs": {
 			"contentName":"source.js",
 			"name": "meta.block.ejs",
-			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\/))",
+			"begin":"(<[%?](?:(?!php))[%_=-]?)(?!(\\s*\\*\\/))",
 			"beginCaptures": {
 				"1": {
-					"name": "keyword.operator.relational.js"
-				},
-				"3": {
-					"name": "meta.embedded.ejs",
-					"contentName": "source.js",
-					"patterns":[
-						{
-							"include":"source.js"
-						}
-					]
+					"name": "punctuation.section.embedded.begin.ejs"
 				}
 			},
-			"end": "(([_-]?[%?]>))",
+			"end": "([_-]?[%?]>)",
 			"endCaptures": {
 				"1": {
-					"name": "keyword.operator.relational.js"
+					"name": "punctuation.section.embedded.end.ejs"
 				}
 			},
 			"patterns":[
