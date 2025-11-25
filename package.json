@@ -75,5 +75,10 @@
 		"id": "9cd87837-c82a-4817-9b79-1c84775aa158",
 		"publisherId": "8a82c29a-f974-4692-be63-35a118c52919",
 		"publisherDisplayName": "DigitalBrainstem"
+	},
+	"dependencies": {
+		"oniguruma": "^7.2.3",
+		"vscode-oniguruma": "^2.0.1",
+		"vscode-textmate": "^9.2.1"
 	}
 }
